@@ -1,0 +1,60 @@
+Espectros de Cf252 con blindaje de Pb(3cm) + Cu(5cm) - Metodo LLNL (METHOD=5)
+c
+c
+100 1  -1e-10       -1000  imp:n,p=1  $ Cf252
+101 2  -11.34  1000 -1001  imp:n,p=1  $ Pb 
+102 3   -8.96  1001 -1002  imp:n,p=1  $ Cu
+999 0                1002  imp:n,p=0  $ Nada
+
+1000 SO  0.000000001              $ Esfera para Cf252
+1001 SO  3                        $ Esfera para el Pb
+1002 SO  8                        $ Esfera para el Cu
+
+M1    98252.80c     1             $ Cf252
+M2    82000         1             $ Pb  
+M3    29000         1             $ Cu
+c ***************************************************
+c FUENTE
+c ***************************************************
+c
+SDEF  PAR=-SF 
+c ***************************************************
+c TALLIES
+c ***************************************************
+FC11 Neutrones que salen del Cf
+F11:n 1000
+E11 1e-5 198ILOG 100
+c
+FC21 Neutrones que salen del Pb
+F21:n 1001
+E21 1e-5 198ILOG 100
+c
+FC31 Neutrones que salen del Cu
+F31:n 1002
+E31 1e-5 198ILOG 100
+c
+c
+FC61 Fotones que salen del Cf
+F61:p 1000
+E61 2e-2 198ILOG 50
+c
+FC71 Fotones que salen del Pb
+F71:p 1001
+E71 2e-2 198ILOG 50
+c
+FC81 Fotones que salen del Cu
+F81:p 1002
+E81 2e-2 198ILOG 50
+c
+c ***************************************************
+c PARAMETROS
+c ***************************************************
+FMULT METHOD=5
+MODE n p
+CUT:n J J 0 0           $ Fuerza captura analógica
+CUT:p J J 0 0           $ Fuerza captura analógica
+RAND GEN=2 SEED=1
+NPS 1e6
+PRINT
+
+
