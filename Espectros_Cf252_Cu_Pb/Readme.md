@@ -18,7 +18,11 @@ Se hacen tallies tanto para fotones como para neutrones que cruzan las superfici
   - `espectros_neutrones_XXXX.png` : Gráfico con los espectros de neutrones en cada superficie
   - `espectros_fotones_XXXX.pong` : Gráfico con los espectros de fotones en cada superficie
 
-donde XXXX = {LLNL, FREYA}
+donde XXXX = {LLNL, FREYA, M3}
+
+Los métodos LLNL y FREYA generan fotones instantáneos a partír de la fisión espontánea del $^{252}Cf$.
+
+El método M3 no genera fotones instantáneos. Utiliza el mismo espectro de neutrones que el LLNL (Watt).
 
 ## Resultados
 
@@ -26,8 +30,12 @@ donde XXXX = {LLNL, FREYA}
 
 ![Espectros de neutrones con el método FREYA](espectros_neutrones_FREYA.png)
 
+![Espectros de neutrones con el método M3](espectros_neutrones_M3.png)
+
 ![Espectros de fotones con el método LLNL](espectros_fotones_LLNL.png)
 
 ![Espectros de fotones con el método FREYA](espectros_fotones_FREYA.png)
+
+![Espectros de fotones con el método M3 (sin fotones instantáneos de fisión espontánea)](espectros_fotones_M3.png)
 
 
