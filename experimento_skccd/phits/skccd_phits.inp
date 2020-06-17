@@ -1,0 +1,86 @@
+[ T i t l e ]
+Skipper CCD with lead and cooper shield using Cf252 source
+
+[ P a r a m e t e r s ]
+ icntl    =           0     # (D=0) 3:ECH 5:NOR 6:SRC 7,8:GSH 11:DSH 12:DUMP
+ maxcas   =         100     # (D=10) number of particles per one batch
+ maxbch   =          10     # (D=10) number of batches
+ file(1)  = /mnt/hdpablo/pablo/phits/phits        # (D=/mnt/hdpablo/pablo/phits/phits) PHITS install folder name
+ file(6)  = phits.out       # (D=phits.out) general output file name
+    ndedx = 2
+
+infl: {experimento_phits}
+
+[ T - T r a c k ]
+     mesh =  xyz            # mesh type is xyz scoring mesh
+   x-type =    2            # x-mesh is linear given by xmin, xmax and nx
+       nx =  200            # number of x-mesh points
+     xmin =  -25.           # minimum value of x-mesh points
+     xmax =   25.           # maximum value of x-mesh points
+   y-type =    1            # y-mesh is given by the below data
+       ny =    1            # number of y-mesh points
+           -5.0  5.0
+   z-type =    2            # z-mesh is linear given by zmin, zmax and nz
+       nz =  200            # number of z-mesh points
+     zmin =  -25.           # minimum value of z-mesh points
+     zmax =   25.           # maximum value of z-mesh points
+     part =  all      
+   e-type =    1            # e-mesh is given by the below data
+       ne =    1            # number of e-mesh points
+            0.0  1000.0
+     unit =    1            # unit is [1/cm^2/source]
+     axis =   xz            # axis of output
+     file = track_xz.out  # file name of output for the above axis
+    title = Track Detection using [T-track] tally
+    gshow =    3            # 0: no 1:bnd, 2:bnd+mat, 3:bnd+reg 4:bnd+lat
+   epsout =    1            # (D=0) generate eps file by ANGEL
+
+[ T - T r a c k ]
+     mesh =  xyz            # mesh type is xyz scoring mesh
+   x-type =    2            # x-mesh is linear given by xmin, xmax and nx
+       nx =  200            # number of x-mesh points
+     xmin =  -25.           # minimum value of x-mesh points
+     xmax =   25.           # maximum value of x-mesh points
+   y-type =    2            # y-mesh is given by the below data
+       ny =  200            # number of y-mesh points
+     ymin = -1.0
+     ymax =  40.0
+   z-type =    1            # z-mesh is linear given by zmin, zmax and nz
+       nz =    1            # number of z-mesh points
+            -23.0 23.
+     part =  all      
+   e-type =    1            # e-mesh is given by the below data
+       ne =    1            # number of e-mesh points
+            0.0  1000.0
+     unit =    1            # unit is [1/cm^2/source]
+     axis =   xy            # axis of output
+     file = track_xy.out  # file name of output for the above axis
+    title = Track Detection using [T-track] tally
+    gshow =    3            # 0: no 1:bnd, 2:bnd+mat, 3:bnd+reg 4:bnd+lat
+   epsout =    1            # (D=0) generate eps file by ANGEL
+
+
+[ T - 3Dshow ]
+   output =    3            # (D=3) 0:draft, 1:line, 2:col, 3:line+col
+       x0 =  0.             # (D=0.0) x-coordinate of the origin
+       y0 =  0.             # (D=0.0) y-coordinate of the origin
+       z0 =  0.             # (D=0.0) z-coordinate of the origin
+    e-the =   45.           # (D=80.0) eye point theta(degree) from z-axis
+    e-phi =  -10.           # (D=140.0) eye point phi(degree) from x-axis
+    e-dst =  400.           # (D=w-dst*10) eye point distance from origin
+    l-the =  150.           # (D=e-the) light point theta from z-axis
+    l-phi =   30.           # (D=e-phi) light point phi from x-axis
+    l-dst =  100.           # (D=e-dst) light point distance from origin
+    w-wdt =   50.           # (D=100) width of window (cm)
+    w-hgt =   50.           # (D=100) hight of window (cm)
+    w-dst =   30.           # (D=200) window distance from origin
+   heaven =   y             # (D=y) direction to heaven
+     line =    1            # (D=0) 0:surface+mat, 1:+region
+   shadow =    2            # (D=0) 0:no, 1:shadow
+    resol =    2            # (D=1) resolution of 3dshow
+     file = 3dshow.out      # file name of output
+    title = Check geometry using [T-3dshow] tally
+   epsout =    1            # (D=0) generate eps file by ANGEL
+
+[ E n d ]
+

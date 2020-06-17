@@ -1,0 +1,22 @@
+Experimento Skipper CCD con blindaje de Pb y Cu para una fuente de Cf252 
+c
+c
+READ FILE=experimento_mcnp
+c ************************************************************************
+c TALLIES
+c ************************************************************************
+FC11 Neutrones que salen del Cf
+F11:n 1000
+E11 1e-5 198ILOG 100
+c ************************************************************************
+c PARAMETROS
+c ************************************************************************
+FMULT METHOD=5          $ Generador LLNL (neutrones y fotones)
+MODE n p
+CUT:n J J 0 0           $ Fuerza captura analógica
+CUT:p J J 0 0           $ Fuerza captura analógica
+RAND GEN=2 SEED=1
+NPS 1e3
+PRINT
+
+
