@@ -16,7 +16,23 @@ mat[1]    Cf252 1
 mat[2]    Pb 1
 mat[3]    Cu 1
 mat[4]    Si 1
-
+mat[5]    6000   1.215E-04    $ C
+         25055   1.751E-03    $ Mn55
+         14028   1.580E-03    $ Si28
+         14029   8.022E-05    $ Si29
+         14030   5.288E-05    $ Si30
+         24050   7.639E-04    $ Cr50
+         24052   1.473E-02    $ Cr52
+         24053   1.670E-03    $ Cr53
+         24054   4.158E-04    $ Cr54
+         28058   5.023E-03    $ Ni58
+         28060   1.935E-03    $ Ni60
+         28061   8.411E-05    $ Ni61
+         28062   2.681E-04    $ Ni62
+         28064   6.832E-05    $ Ni64
+         26054   3.473E-03    $ Fe54
+         26056   5.452E-02    $ Fe56
+         26057   1.259E-03    $ Fe57
 
 
 [ Mat Name Color ]
@@ -26,25 +42,28 @@ mat     name
 2       Lead
 3       Cooper
 4       Silicon
+5       Stainless Steel
 
 
 [ S u r f a c e ]
 
-1000 SY  -0.1 0.1                                  $ Esfera para Cf252
-1001 RPP -10.16 10.16 0       3.048   -15.24 15.24 $ Blindaje Pb 
-1002 RPP -10.16 10.16 8.128   13.208  -15.24 15.24 $ Blindaje Cu inferior
-1003 RPP -4.5   4.5   13.208  13.2755 -15    15    $ Silicio (Skipper CCD)
-1004 RPP -10.16 10.16 13.2755 18.3555 -15.24 15.24 $ Blindaje Cu superior
-1005 RCC 0 18.288 -22.86 0 0 45.72 15.24           $ Cámara de vacío
-9999 SO 50                                         $ Laboratorio
+1000 SY  -0.1 0.1                                    $ Esfera para Cf252
+1001 RPP -10.16 10.16 0       3.048   -15.24 15.24   $ Blindaje Pb 
+1002 RPP -10.16 10.16 8.128   13.208  -15.24 15.24   $ Blindaje Cu inferior
+1003 RPP -4.5   4.5   13.208  13.2755 -15    15      $ Silicio (Skipper CCD)
+1004 RPP -10.16 10.16 13.2755 18.3555 -15.24 15.24   $ Blindaje Cu superior
+1005 RCC 0 18.288 -22.86 0 0 45.72 15.24             $ Cámara de vacío externa
+1006 RCC 0 18.288 -22.16 0 0 44.02 14.54             $ Cámara de vacío interna
+9999 SO 50                                           $ Laboratorio
 
 
 [ C e l l ]
-100  1  -1e-10  -1000                 $ Cf252
-101  2  -11.34  -1001                 $ Blindaje de Pb
-102  3  -8.96   -1002                 $ Blindaje Cu inferior
-103  4  -2.33   -1003                 $ Silicio (Skipper CCD)
-104  3  -8.96   -1004                 $ Blindaje Cu superior
-105  0          -1005 1002 1003 1004  $ Cámara de vacío
-106  0          -9999 1005 1000 1001  $ Laboratorio (iría aire)
-999 -1           9999                 $ Nada
+100   1  -1e-10  -1000                    $ Cf252
+101   2  -11.34  -1001                    $ Blindaje de Pb
+102   3  -8.96   -1002                    $ Blindaje Cu inferior
+103   4  -2.33   -1003                    $ Silicio (Skipper CCD)
+104   3  -8.96   -1004                    $ Blindaje Cu superior
+105   5  -7.99   -1005 1006               $ Pared cámara de vacío 
+106   0          -1006 1002 1003 1004     $ Interior Cámara de vacío
+107   0          -9999 1005 1000 1001     $ Laboratorio (iría aire)
+999  -1           9999                    $ Nada

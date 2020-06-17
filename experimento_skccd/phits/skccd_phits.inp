@@ -63,15 +63,15 @@ infl: {experimento_phits}
 [ T - 3Dshow ]
    output =    3            # (D=3) 0:draft, 1:line, 2:col, 3:line+col
        x0 =  0.             # (D=0.0) x-coordinate of the origin
-       y0 =  0.             # (D=0.0) y-coordinate of the origin
-       z0 =  0.             # (D=0.0) z-coordinate of the origin
+       y0 =  15.             # (D=0.0) y-coordinate of the origin
+       z0 =   5.             # (D=0.0) z-coordinate of the origin
     e-the =   45.           # (D=80.0) eye point theta(degree) from z-axis
     e-phi =  -10.           # (D=140.0) eye point phi(degree) from x-axis
     e-dst =  400.           # (D=w-dst*10) eye point distance from origin
     l-the =  150.           # (D=e-the) light point theta from z-axis
     l-phi =   30.           # (D=e-phi) light point phi from x-axis
     l-dst =  100.           # (D=e-dst) light point distance from origin
-    w-wdt =   50.           # (D=100) width of window (cm)
+    w-wdt =   60.           # (D=100) width of window (cm)
     w-hgt =   50.           # (D=100) hight of window (cm)
     w-dst =   30.           # (D=200) window distance from origin
    heaven =   y             # (D=y) direction to heaven
