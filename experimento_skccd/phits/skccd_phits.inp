@@ -1,15 +1,19 @@
+$OMP=0
 [ T i t l e ]
 Skipper CCD with lead and cooper shield using Cf252 source
 
 [ P a r a m e t e r s ]
  icntl    =           0     # (D=0) 3:ECH 5:NOR 6:SRC 7,8:GSH 11:DSH 12:DUMP
- maxcas   =         100     # (D=10) number of particles per one batch
- maxbch   =          10     # (D=10) number of batches
+ maxcas   =        1000     # (D=10) number of particles per one batch
+ maxbch   =        1000     # (D=10) number of batches
  file(1)  = /mnt/hdpablo/pablo/phits/phits        # (D=/mnt/hdpablo/pablo/phits/phits) PHITS install folder name
  file(6)  = phits.out       # (D=phits.out) general output file name
     ndedx = 2
+     negs = 1               # (D=-1) Elec. Transp. -1: only photons 
+                            # 1: Transport p, e-, e+ con EGS5 database
+   e-mode = 2               # (D=0) 0:Normal mode, 2: Event gen. mode version 2 (recommended)
 
-infl: {experimento_phits}
+infl: {experimento_phits_dev}
 
 [ T - T r a c k ]
      mesh =  xyz            # mesh type is xyz scoring mesh
@@ -59,6 +63,21 @@ infl: {experimento_phits}
     gshow =    3            # 0: no 1:bnd, 2:bnd+mat, 3:bnd+reg 4:bnd+lat
    epsout =    1            # (D=0) generate eps file by ANGEL
 
+[ T - T r a c k ]
+     mesh =  reg            # mesh type is xyz scoring mesh
+      reg =  101 102 103
+     part =  neutron photon
+   e-type =    3            # e-mesh is given by the below data
+       ne =    200          # number of e-mesh points
+     emin =  1e-5
+     emax =  10.0
+     unit =    2            # unit is [1/cm^2/MeV/source]
+     axis =   eng            # axis of output
+     file = track_eng.out  # file name of output for the above axis
+    title = Track Detection using [T-track] tally
+    gshow =    3            # 0: no 1:bnd, 2:bnd+mat, 3:bnd+reg 4:bnd+lat
+   epsout =    1            # (D=0) generate eps file by ANGEL
+
 
 [ T - 3Dshow ]
    output =    3            # (D=3) 0:draft, 1:line, 2:col, 3:line+col
@@ -82,5 +101,18 @@ infl: {experimento_phits}
     title = Check geometry using [T-3dshow] tally
    epsout =    1            # (D=0) generate eps file by ANGEL
 
-[ E n d ]
+[ T - V o l u m e ] off
+     mesh =  reg            # mesh type is region-wise
+      reg = 100 101 102 103 104 105 106  
+     file = volume.out      # file name of output for [volume]
+   s-type =    2            # 1: Sphere source, 2: Rectangular source
+       x0 = -16.             #  x-min of rectangular
+       x1 =  16.             #  x-max of rectangular
+       y0 = -1.              #  y-min of rectangular
+       y1 =  35.             #  y-max of rectangular
+       z0 = -25.             #  z-min of rectangular
+       z1 =  25.             #  z-max of rectangular
+   stdcut = 0.00001
 
+
+[ E n d ]
