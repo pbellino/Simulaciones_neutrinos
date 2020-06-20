@@ -5,18 +5,39 @@ READ FILE=experimento_mcnp
 c ************************************************************************
 c TALLIES
 c ************************************************************************
-FC11 Neutrones que salen del Cf
-F11:n 1000
-E11 1e-5 198ILOG 100
+FC14 Flujo de neutrones en el Pb
+F14:n 101
+E14 1e-5 198ILOG 100
+c
+FC24 Flujo de neutrones en el Cu inferior
+F24:n 102
+E24 1e-5 198ILOG 100
+c
+FC34 Flujo de neutrones en el Si
+F34:n 103
+E34 1e-5 198ILOG 100
+c
+FC514 Flujo de fotones en el Pb
+F514:p 101
+E514 1e-5 198ILOG 100
+c
+FC524 Flujo de fotones en el Cu inferior
+F524:p 102
+E524 1e-5 198ILOG 100
+c
+FC534 Flujo de fotones en el Si
+F534:p 103
+E534 1e-5 198ILOG 100
+c
 c ************************************************************************
 c PARAMETROS
 c ************************************************************************
-FMULT METHOD=5          $ Generador LLNL (neutrones y fotones)
+FMULT METHOD=3          $ Generador LLNL (neutrones y fotones)
 MODE n p
 CUT:n J J 0 0           $ Fuerza captura analógica
 CUT:p J J 0 0           $ Fuerza captura analógica
 RAND GEN=2 SEED=1
-NPS 1e3
+NPS 1e6
 PRINT
 
 
