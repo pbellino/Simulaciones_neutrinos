@@ -1,0 +1,33 @@
+[ T - V o l u m e ] off
+     mesh =  reg            # mesh type is region-wise
+      reg = { 101 - 106 }
+     file = volume.out      # file name of output for [volume]
+   stdcut = 1.0000000E-05   # (D=-1) threshold value of STD cutoff
+   s-type =    2            # 1: Sphere source, 2: Rectangular source
+       x0 = -16.00000       #  x-min of rectangular
+       y0 = -1.000000       #  y-min of rectangular
+       z0 = -25.00000       #  z-min of rectangular
+       x1 =  16.00000       #  x-max of rectangular
+       y1 =  35.00000       #  y-max of rectangular
+       z1 =  25.00000       #  z-max of rectangular
+#    used :        main (  %)        temp (  %)       total (  %)
+#  memory :           6 (  0)           0 (  0)           6 (  0)
+
+#------------------------------------------------------------------------------
+
+[ V o l u m e ]
+  non      reg      vol      non
+    1      101   1.8894E+03  0.0016
+    2      102   3.1417E+03  0.0013
+    3      103   1.8126E+01  0.0149
+    4      104   3.1498E+03  0.0013
+    5      105   4.1216E+03  0.0011
+    6      106   2.2919E+04  0.0004
+ 
+# Information for Restart Calculation
+# This calculation was newly started
+# istdev =  2 # 1:Batch variance, 2:History variance
+# resc2  = 3.29525483280608205E+03 # Total source weight or Total source weight / maxcas
+# resc3  = 5.00000000000000000E+06 # Total history number or Total batch number
+# maxcas =        5000 # History / Batch, only used for istdev=1
+# rijklst= 249405043501977.0 # Next initial random number

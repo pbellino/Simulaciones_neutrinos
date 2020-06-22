@@ -12,7 +12,7 @@
 
 [ M a t e r i a l ]
 
-mat[1]    Cf252 1
+$ mat[1]    Cf252 1
 mat[2]    Pb 1
 mat[3]    Cu 1
 mat[4]    Si 1
@@ -38,7 +38,7 @@ mat[5]    6000   1.215E-04    $ C
 [ Mat Name Color ]
 
 mat     name 
-1       Californium
+$ 1       Californium
 2       Lead
 3       Cooper
 4       Silicon
@@ -60,7 +60,7 @@ $ ¡¡¡Si se cambia la geometría, hay que volver a calcular el volumen!!!
 
 
 [ C e l l ]
-100   1  -1e-10  -1000                    $ Cf252
+100   0          -1000                    $ Cf252
 101   2  -11.34  -1001                    $ Blindaje de Pb
 102   3  -8.96   -1002                    $ Blindaje Cu inferior
 103   4  -2.33   -1003                    $ Silicio (Skipper CCD)

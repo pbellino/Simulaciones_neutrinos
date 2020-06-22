@@ -13,7 +13,7 @@ Skipper CCD with lead and cooper shield using Cf252 source
                             # 1: Transport p, e-, e+ con EGS5 database
    e-mode = 2               # (D=0) 0:Normal mode, 2: Event gen. mode version 2 (recommended)
 
-infl: {experimento_phits_dev}
+infl: {experimento_phits}
 
 [ T - T r a c k ]
      mesh =  xyz            # mesh type is xyz scoring mesh
@@ -77,6 +77,28 @@ infl: {experimento_phits_dev}
     title = Track Detection using [T-track] tally
     gshow =    3            # 0: no 1:bnd, 2:bnd+mat, 3:bnd+reg 4:bnd+lat
    epsout =    1            # (D=0) generate eps file by ANGEL
+
+
+[ T-Deposit ] off
+    title = Energy Deposition 
+     mesh =  reg            # mesh type is region-wise
+      reg = 101 102 103 
+     unit =    3            # unit is [1/source] : only for output=deposit
+   letmat =    0            # (D=0) material id for LET, 0: real material
+  dedxfnc =    0            # (D=0) user defined multiplier, 0(no), 1, 2
+ material =  all            # (D=all) number of specific material
+   output = deposit         # deposit enerygy distribution
+   e-type =    2            # e-mesh is linear given by emin, emax and ne
+     emin =   0.000000      # minimum value of e-mesh points
+     emax =   40.00000      # maximum value of e-mesh points
+       ne =  200            # number of e-mesh points
+     axis =   eng           # axis of output
+     file = deposit.out     # file name of output for the above axis
+     part =  all    
+   y-txt  = Response [cm^2]
+   epsout =    1            # (D=0) generate eps file by ANGEL
+   dresol =  0.2            # (D=0) width = sqrt(dresol**2 + dfano*E)
+    dfano =  0.05           # (D=0) width = sqrt(dresol**2 + dfano*E)
 
 
 [ T - 3Dshow ]
