@@ -11,7 +11,7 @@
 * `run_phits.sh` : script auxiliar para correr el input y transfromar imágenes
 
 
-## Geometría simulada
+E## Geometría simulada
 
 ![Esquema 3D del experimento](3dshow.png)
 
@@ -20,7 +20,7 @@
 ![Esquema xz del experimento](track_xz_geom.png)
 
 
-## Resultados de prueba
+### Resultados de prueba
 
 ![Esquema xy del experimento](track_xy.png)
 
@@ -32,3 +32,25 @@
 ## Notas
 
 - Cuando se piden tallies por regiones, se debe poner el volúmen a mano. Existe la forma de que lo calcule, pero al tener geometrías de tamaños muy distintos (el Si sobre todo) es bastante ineficiente. Puse los valores calculados a mano (que son exactamente los que calcula MCNP).
+
+
+## Deposición de energía
+
+Pruebas para entender cómo se calcula en PHITS
+
+
+Tres tallies distintas: para plomo, cobre inferior y silicio.
+
+Notas:
+
+- Para entender la deposición total de energía en cada material hay que buscar lo nucleídos que podrían dejar energía (no se sabe a priori y no lo dice tampoco).
+
+- Con las pruebas hasta ahora (1e6 partículas), en ningún caso hubo deposición de energía de fotones.
+
+
+### Resultados:
+
+![Deposición de energía en plomo](deposit_Pb.png)
+![Deposición de energía en cobre inferior](deposit_Cu.png)
+![Deposición de energía en silicio](deposit_Si.png)
+#

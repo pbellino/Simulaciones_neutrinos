@@ -5,7 +5,7 @@ Skipper CCD with lead and cooper shield using Cf252 source
 [ P a r a m e t e r s ]
  icntl    =           0     # (D=0) 3:ECH 5:NOR 6:SRC 7,8:GSH 11:DSH 12:DUMP
  maxcas   =        1000     # (D=10) number of particles per one batch
- maxbch   =        1000   # (D=10) number of batches
+ maxbch   =        1000     # (D=10) number of batches
  file(1)  = /mnt/hdpablo/pablo/phits/phits        # (D=/mnt/hdpablo/pablo/phits/phits) PHITS install folder name
  file(6)  = phits.out       # (D=phits.out) general output file name
     ndedx = 2
@@ -80,9 +80,9 @@ infl: {experimento_phits}
 
 
 [ T-Deposit ] 
-    title = Energy Deposition 
+    title = Energy Deposition in lead
      mesh =  reg            # mesh type is region-wise
-      reg = 101 102 103
+      reg = 101 
      unit =    3            # unit is [1/source] : only for output=deposit
    letmat =    0            # (D=0) material id for LET, 0: real material
   dedxfnc =    0            # (D=0) user defined multiplier, 0(no), 1, 2
@@ -93,12 +93,55 @@ infl: {experimento_phits}
      emax =   10.0          # maximum value of e-mesh points
        ne =  200            # number of e-mesh points
      axis =   eng           # axis of output
-     file = deposit.out     # file name of output for the above axis
-     part = Pb204 Cu63 electron positron all
+     file = deposit_Pb.out     # file name of output for the above axis
+     part = Pb204 Pb207 Pb208 electron positron all
    y-txt  = Response [cm^2]
    epsout =    1            # (D=0) generate eps file by ANGEL
    dresol =  0.2            # (D=0) width = sqrt(dresol**2 + dfano*E)
     dfano =  0.05           # (D=0) width = sqrt(dresol**2 + dfano*E)
+
+[ T-Deposit ] 
+    title = Energy Deposition in lower cooper
+     mesh =  reg            # mesh type is region-wise
+      reg = 102
+     unit =    3            # unit is [1/source] : only for output=deposit
+   letmat =    0            # (D=0) material id for LET, 0: real material
+  dedxfnc =    0            # (D=0) user defined multiplier, 0(no), 1, 2
+ material =  all            # (D=all) number of specific material
+   output = deposit         # deposit enerygy distribution
+   e-type =    3            # e-mesh is linear given by emin, emax and ne
+     emin =   1e-5         # minimum value of e-mesh points
+     emax =   10.0          # maximum value of e-mesh points
+       ne =  200            # number of e-mesh points
+     axis =   eng           # axis of output
+     file = deposit_Cu.out     # file name of output for the above axis
+     part = Cu63 Cu65 electron positron all
+   y-txt  = Response [cm^2]
+   epsout =    1            # (D=0) generate eps file by ANGEL
+   dresol =  0.2            # (D=0) width = sqrt(dresol**2 + dfano*E)
+    dfano =  0.05           # (D=0) width = sqrt(dresol**2 + dfano*E)
+
+[ T-Deposit ] 
+    title = Energy Deposition in silicon
+     mesh =  reg            # mesh type is region-wise
+      reg = 103
+     unit =    3            # unit is [1/source] : only for output=deposit
+   letmat =    0            # (D=0) material id for LET, 0: real material
+  dedxfnc =    0            # (D=0) user defined multiplier, 0(no), 1, 2
+ material =  all            # (D=all) number of specific material
+   output = deposit         # deposit enerygy distribution
+   e-type =    3            # e-mesh is linear given by emin, emax and ne
+     emin =   1e-5         # minimum value of e-mesh points
+     emax =   10.0          # maximum value of e-mesh points
+       ne =  200            # number of e-mesh points
+     axis =   eng           # axis of output
+     file = deposit_Si.out  # file name of output for the above axis
+     part = Si28 electron positron all
+   y-txt  = Response [cm^2]
+   epsout =    1            # (D=0) generate eps file by ANGEL
+   dresol =  0.2            # (D=0) width = sqrt(dresol**2 + dfano*E)
+    dfano =  0.05           # (D=0) width = sqrt(dresol**2 + dfano*E)
+
 
 
 [ T - 3Dshow ]
