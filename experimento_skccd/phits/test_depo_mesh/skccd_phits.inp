@@ -4,8 +4,8 @@ Skipper CCD with lead and cooper shield using Cf252 source
 
 [ P a r a m e t e r s ]
  icntl    =           0     # (D=0) 3:ECH 5:NOR 6:SRC 7,8:GSH 11:DSH 12:DUMP
- maxcas   =        5     # (D=10) number of particles per one batch
- maxbch   =        1     # (D=10) number of batches
+ maxcas   =           1     # (D=10) number of particles per one batch
+ maxbch   =           1     # (D=10) number of batches
  file(1)  = /mnt/hdpablo/pablo/phits/phits        # (D=/mnt/hdpablo/pablo/phits/phits) PHITS install folder name
  file(6)  = phits.out       # (D=phits.out) general output file name
     ndedx = 2
@@ -66,11 +66,11 @@ infl: {experimento_phits}
 [ T - T r a c k ]
      mesh =  reg            # mesh type is xyz scoring mesh
       reg =  100
-     part =  neutron photon
+     part =  all
    e-type =    3            # e-mesh is given by the below data
        ne =    200          # number of e-mesh points
      emin =  1e-5
-     emax =  10.0
+     emax =  100.0
      unit =    2            # unit is [1/cm^2/MeV/source]
      axis =   eng            # axis of output
      file = track_eng.out  # file name of output for the above axis
@@ -89,12 +89,12 @@ infl: {experimento_phits}
  material =  all            # (D=all) number of specific material
    output = deposit         # deposit enerygy distribution
    e-type =    3            # e-mesh is linear given by emin, emax and ne
-     emin =   1e-5         # minimum value of e-mesh points
-     emax =   10.0          # maximum value of e-mesh points
+     emin =   1e-3         # minimum value of e-mesh points
+     emax =   200.0          # maximum value of e-mesh points
        ne =  200            # number of e-mesh points
      axis =   eng           # axis of output
      file = deposit_Si.out  # file name of output for the above axis
-     part = Si28 electron positron all
+     part = all
    y-txt  = Response [cm^2]
    epsout =    1            # (D=0) generate eps file by ANGEL
    dresol =  0.2            # (D=0) width = sqrt(dresol**2 + dfano*E)
@@ -110,10 +110,10 @@ infl: {experimento_phits}
      xmax =   3.           # maximum value of x-mesh points
    y-type =    2            # y-mesh is given by the below data
        ny =    1            # number of y-mesh points
-     ymin = -0.1
-     ymax =  0.1
+     ymin = -0.03375
+     ymax =  0.03375
    z-type =    2            # z-mesh is linear given by zmin, zmax and nz
-       nz =   50            # number of z-mesh points
+       nz =  200            # number of z-mesh points
      zmin =  -25.
      zmax =   25.
      unit =    3            # unit is [1/source] : only for output=deposit
@@ -122,16 +122,43 @@ infl: {experimento_phits}
  material =  all            # (D=all) number of specific material
    output = deposit         # deposit enerygy distribution
    e-type =    3            # e-mesh is linear given by emin, emax and ne
-     emin =   1e-5         # minimum value of e-mesh points
-     emax =   10.0          # maximum value of e-mesh points
-       ne =    5            # number of e-mesh points
-     axis =   eng           # axis of output
+     emin =   1e-2         # minimum value of e-mesh points
+     emax =   100.0          # maximum value of e-mesh points
+       ne =   10            # number of e-mesh points
+     axis =   xz           # axis of output
      file = deposit_mesh.out  # file name of output for the above axis
      part =   all
-   y-txt  = Response [cm^2]
+$   y-txt  = Response [cm^2]
    epsout =    1            # (D=0) generate eps file by ANGEL
-   dresol =  0.2            # (D=0) width = sqrt(dresol**2 + dfano*E)
-    dfano =  0.05           # (D=0) width = sqrt(dresol**2 + dfano*E)
+   dresol =  0.2            # (D=0) width = sqrt(dresol**2 + dfano*E) 0.2
+    dfano =  0.09           # (D=0) width = sqrt(dresol**2 + dfano*E) 0.05
+
+[ T-Deposit ] 
+    title = Energy Deposition in z direction
+     mesh =  xyz            # mesh type is region-wise
+   x-type =    2            # x-mesh is linear given by xmin, xmax and nx
+       nx =  200            # number of x-mesh points
+     xmin =  -3.           # minimum value of x-mesh points
+     xmax =   3.           # maximum value of x-mesh points
+   y-type =    2            # y-mesh is given by the below data
+       ny =    1            # number of y-mesh points
+     ymin = -0.03375
+     ymax =  0.03375
+   z-type =    2            # z-mesh is linear given by zmin, zmax and nz
+       nz =  200            # number of z-mesh points
+     zmin =  -25.
+     zmax =   25.
+     unit =    0            # unit is [1/source] : only for output=deposit
+   letmat =    0            # (D=0) material id for LET, 0: real material
+  dedxfnc =    0            # (D=0) user defined multiplier, 0(no), 1, 2
+ material =  all            # (D=all) number of specific material
+   output = dose
+     axis =   xz           # axis of output
+     file = deposit_z.out  # file name of output for the above axis
+     part =   all
+   epsout =    1            # (D=0) generate eps file by ANGEL
+   dresol =  0.8            # (D=0) width = sqrt(dresol**2 + dfano*E) 0.2
+    dfano =  0.9           # (D=0) width = sqrt(dresol**2 + dfano*E) 0.05
 
 
 

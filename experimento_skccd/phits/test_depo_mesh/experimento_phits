@@ -2,11 +2,11 @@
 
    s-type =   1             # mono-energetic axial source
      proj =   alpha         # kind of incident particle         
-      dir =   0.9           # z-direction of beam [cosine]
+      dir =   1.0            # z-direction of beam [cosine]
        r0 =   0.            # radius [cm]
        z0 =  -15.01         # minimum position of y-axis [cm]
        z1 =  -15.01         # maximum position of y-axis [cm]
-       e0 =   50.            # energy of beam [MeV/u] (ignored when ispfs=1,2)
+       e0 =   100.            # energy of beam [MeV/u] (ignored when ispfs=1,2)
 $    ispfs =   1             # Netron source from spontaneous fission
                             # Tally result normalized by number of spontaneous fissions
 
@@ -22,7 +22,7 @@ mat     name
 
 [ S u r f a c e ]
 
-1000 RPP -4.5   4.5   -0.03375 0.03375   -15 15      $ Silicio (Skipper CCD)
+1000 RPP -4.5   4.5  -0.03375 0.03375   -15 15      $ Silicio (Skipper CCD)
 9999 SO 40                                           $ Laboratorio
 
 
