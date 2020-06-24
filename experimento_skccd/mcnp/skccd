@@ -29,6 +29,10 @@ FC534 Flujo de fotones en el Si
 F534:p 103
 E534 1e-5 198ILOG 100
 c
+FC18 Deposición de neutrones en Si
+F18:e 103
+E18 1e-5 198ILOG 100
+c
 c ************************************************************************
 c PARAMETROS
 c ************************************************************************
@@ -37,7 +41,7 @@ MODE n p
 CUT:n J J 0 0           $ Fuerza captura analógica
 CUT:p J J 0 0           $ Fuerza captura analógica
 RAND GEN=2 SEED=1
-NPS 1e6
+NPS 1e5
 PRINT
 
 

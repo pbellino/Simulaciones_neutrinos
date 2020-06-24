@@ -57,11 +57,11 @@ c ***************************************************
 c PARAMETROS
 c ***************************************************
 FMULT METHOD=6
-MODE n p
+MODE n p 
 CUT:n J J 0 0           $ Fuerza captura analógica
 CUT:p J J 0 0           $ Fuerza captura analógica
 RAND GEN=2 SEED=1
-NPS 1e9
+NPS 1e2
 PRINT
 
 
