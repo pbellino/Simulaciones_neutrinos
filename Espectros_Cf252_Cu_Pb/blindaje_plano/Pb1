@@ -1,0 +1,46 @@
+Fuente de Cf252 con blindaje de Pb de 2.5cm (Distancia fuente-det 5cm)
+c
+c
+100 1  -1e-10  -1000                 imp:n,p=1  $ Cf252
+101 2  -11.34  -1001                 imp:n,p=1  $ Pb 
+102 3  -2.33   -1002                 imp:n,p=1  $ Si
+103 0          -9999 1000 1001 1002  imp:n,p=1  $ Lab
+999 0           9999                 imp:n,p=0  $ Nada
+
+1000 SZ -0.0001  0.0001                   $ Esfera para Cf252
+1001 RPP -15.0 15.0 -15.0 15.0 0.0 2.5    $ Plomo
+1002 RPP  -4.5  4.5 -13.0 13.0 5.0 5.5    $ Det
+9999 SO 100                               $ Lab
+
+M1    98252.70c     1       $ Cf252
+M2    82000         1       $ Pb  
+M3    14000         1       $ Si
+c ***************************************************
+c FUENTE
+c ***************************************************
+c
+SDEF  PAR=-SF POS=0 0 -0.0001
+c ***************************************************
+c TALLIES
+c ***************************************************
+c Rango de energías para todas las tallies
+E0 1e-5 198ILOG 100
+c
+FC14 Flujo de neutrones en Si
+F14:n 102
+c
+FC54 Flujo de fotones en Si
+F54:p 102
+c
+c ***************************************************
+c PARAMETROS
+c ***************************************************
+FMULT METHOD=5          $ Método LLNL
+MODE n p
+CUT:n J J 0 0           $ Fuerza captura analógica
+CUT:p J J 0 0           $ Fuerza captura analógica
+RAND GEN=2 SEED=1
+NPS 1e6
+PRINT
+
+

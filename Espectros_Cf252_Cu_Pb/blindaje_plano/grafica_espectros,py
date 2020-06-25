@@ -1,0 +1,103 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+"""
+Script para leer los resultados de cada corrida
+TODO
+"""
+
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+import sys
+sys.path.append('/home/pablo/CinePy/')
+from modules.io_modules import lee_tally_E_card
+sns.set()
+
+
+if __name__ == '__main__':
+
+    archivos = [
+                'Pb0.o',
+                'Pb1.o',
+                'Pb2.o',
+                'Pb3.o',
+               ]
+    labels = [
+              'Sin Pb',
+              '2.5cm de Pb',
+              '5.0cm de Pb',
+              '7.5cm de Pb',
+              ]
+    fig_n, ax_n = plt.subplots(1, 1, figsize=(8, 6))
+    fig_p, ax_p = plt.subplots(1, 1, figsize=(8, 6))
+    tals = ['14', '54']
+    axs = [ax_n, ax_p]
+    for archivo, label in zip(archivos, labels):
+        datos, nombre, bins = lee_tally_E_card(archivo)
+        for tal, ax in zip(tals, axs):
+            eng = datos[tal][:, 0]
+            val = datos[tal][:, 1]
+            std_val = datos[tal][:, 2] * val
+            bin_limits = bins[tal]
+            # Calcula ancho del bin
+            bin_width = np.diff(bin_limits, axis=1)[:, 0]
+            # Normalizo con ancho del bin
+            val = val / bin_width
+            std_val = std_val / bin_width
+            ax.errorbar(eng, val, yerr=std_val, fmt='.-', label=label)
+
+    for ax in axs:
+        ax.set_xlabel('Energía [MeV]')
+        ax.set_ylabel('Flujo 1/cm$^2$/MeV/source')
+        ax.set_xscale('log')
+        ax.set_yscale('log')
+        ax.legend()
+    ax_p.set_xlim(5e-4, 1e2)
+
+    ax_n.set_title('Flujo de neutrones en Si')
+    ax_p.set_title('Flujo de fotones en Si')
+    fig_n.savefig('espectros_neutrones.png')
+    fig_p.savefig('espectros_fotones.png')
+
+    # Atenuación
+
+    fig_an, ax_an = plt.subplots(1, 1, figsize=(8, 6))
+    fig_ap, ax_ap = plt.subplots(1, 1, figsize=(8, 6))
+    tals = ['14', '54']
+    axs = [ax_an, ax_ap]
+    for archivo, label in zip(archivos, labels):
+        datos, nombre, bins = lee_tally_E_card(archivo)
+        for tal, ax in zip(tals, axs):
+            eng = datos[tal][:, 0]
+            val = datos[tal][:, 1]
+            std_val = datos[tal][:, 2] * val
+            bin_limits = bins[tal]
+            # Calcula ancho del bin
+            bin_width = np.diff(bin_limits, axis=1)[:, 0]
+            # Normalizo con ancho del bin
+            val = val / bin_width
+            std_val = std_val / bin_width
+            if archivo == 'Pb0.o':
+                val_norm = val
+                std_val_norm = std_val
+            else:
+                val_n = val / val_norm
+                std_val_n = val_n * np.sqrt((std_val_norm / val_norm)**2 +
+                                            (std_val / val)**2)
+                ax.errorbar(eng, val_n, yerr=std_val_n, fmt='.-', label=label)
+
+    for ax in axs:
+        ax.set_xlabel('Energía [MeV]')
+        ax.set_ylabel('$\phi$ / $\phi$(sin plomo)')
+        ax.set_xscale('log')
+        ax.set_yscale('log')
+        ax.legend()
+    ax_ap.set_xlim(5e-4, 1e2)
+
+    ax_an.set_title('Atenuación de neutrones en Si')
+    ax_ap.set_title('Atenuación de fotones en Si')
+    fig_an.savefig('atenuacion_neutrones.png')
+    fig_ap.savefig('atenuacion_fotones.png')
+
+    plt.show()

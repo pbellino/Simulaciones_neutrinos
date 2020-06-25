@@ -1,0 +1,68 @@
+Fuente de Cf252 con blindaje y con mesa óptica
+c
+c
+100 1  -1e-10  -1000            imp:n,p=1  $ Cf252
+101 2  -8.0    -1001            imp:n,p=1  $ Mesa óptica (acero inox)
+102 3  -11.32   1002 -1003      imp:n,p=1  $ Blindaje plomo
+103 0           1003 -1004      imp:n,p=1  $ Espacio blindaje-detector
+104 0          -9999 1001 1004  imp:n,p=1  $ Lab afuera detector
+105 0          -1002 1000       imp:n,p=1  $ Lab adentro blindaje
+999 0           9999            imp:n,p=0  $ Nada
+
+1000 SZ 12.7  0.0001                   $ Esfera para Cf252
+1001 RCC 0 0 -4 0 0 4 50               $ Mesa óptica (h=4cm, r=50cm
+1002 RCC 0 0 0 0 0 25.4 7.62           $ Cilindro interno blindaje (h=10'', r=3'')
+1003 RCC 0 0 0 0 0 25.4 12.7           $ Cilindro externo blindaje (h=10'', r=5'')
+1004 RCC 0 0 0 0 0 25.4 15.24          $ Cilindro para detector (6'' de la fuente)
+9999 SO 500                            $ Lab
+
+M1    98252.80c     1       $ Cf252
+c ----- Acero inoxidable AISI 304L (dens=7.99 g/cm3) ---------------------
+M2    6000.80c 1.215E-04 $C
+     25055.80c 1.751E-03 $Mn55
+     14028.80c 1.580E-03 $Si28
+     14029.80c 8.022E-05 $Si29
+     14030.80c 5.288E-05 $Si30
+     24050.80c 7.639E-04 $Cr50
+     24052.80c 1.473E-02 $Cr52
+     24053.80c 1.670E-03 $Cr53
+     24054.80c 4.158E-04 $Cr54
+     28058.80c 5.023E-03 $Ni58
+     28060.80c 1.935E-03 $Ni60
+     28061.80c 8.411E-05 $Ni61
+     28062.80c 2.681E-04 $Ni62
+     28064.80c 6.832E-05 $Ni64
+     26054.80c 3.473E-03 $Fe54
+     26056.80c 5.452E-02 $Fe56
+     26057.80c 1.259E-03 $Fe57
+     26058.80c 1.676E-04 $Fe58
+M3   82000     1       $ Pb  
+c ***************************************************
+c FUENTE
+c ***************************************************
+c
+SDEF  PAR=-SF POS=0 0 12.7
+c ***************************************************
+c TALLIES
+c ***************************************************
+c Rango de energías para todas las tallies
+E0 1e-5 198ILOG 100
+c
+FC11 Neutrones a 6'' de fuente
+F11:n 1004.1
+c
+FC51 Fotones a 6'' de fuente
+F51:p 1004.1
+c
+c ***************************************************
+c PARAMETROS
+c ***************************************************
+FMULT METHOD=5          $ Método LLNL
+MODE n p
+CUT:n J J 0 0           $ Fuerza captura analógica
+CUT:p J J 0 0           $ Fuerza captura analógica
+RAND GEN=2 SEED=1
+NPS 1e7
+PRINT
+
+
