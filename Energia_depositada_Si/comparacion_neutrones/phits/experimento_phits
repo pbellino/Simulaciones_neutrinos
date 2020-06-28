@@ -1,0 +1,34 @@
+[ S o u r c e ]
+
+   s-type =   1             # mono-energetic axial source
+     proj =   neutron       # kind of incident particle         
+      dir =   all           # z-direction of beam [cosine]
+       r0 =   0.            # radius [cm]
+       y0 =   0.            # minimum position of y-axis [cm]
+       y1 =   0.            # maximum position of y-axis [cm]
+       e0 =   2.            # energy of beam [MeV/u] (ignored when ispfs=1,2)
+
+[ M a t e r i a l ]
+
+mat[1]   30Si 1
+
+[ Mat Name Color ]
+
+mat     name 
+1       Silicon
+
+
+[ S u r f a c e ]
+
+$ ¡¡¡Si se cambia la geometría, hay que volver a calcular el volumen!!!
+
+1000 SO  2.0               $ Esfera para Cf252
+
+
+[ C e l l ]
+100   1 -2.33    -1000                    $ Cf252
+999  -1           1000                    $ Nada
+
+[ V o l u m e ]
+    reg         vol
+    100    4.12327E+03    $ Pared cámara de vacío 
