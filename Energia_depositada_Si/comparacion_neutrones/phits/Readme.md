@@ -1,4 +1,4 @@
-# Energía depositada por neutrones entre PHITS y MCNP
+# Energía depositada por neutrones en PHITS 
 
 
 ## Modelo:
