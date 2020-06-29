@@ -22,7 +22,7 @@ if __name__ == '__main__':
             ]
 
     fig, ax = plt.subplots(1, 1)
-    particles = ['30Si', '31Si', 'positron', 'electron', 'all']
+    particles = ['30Si', '31Si', 'positron', 'electron', 'alpha', 'all']
 
     for zona in zonas:
         data = lee_espectro_phits_eng(archivo, zona)
@@ -41,7 +41,7 @@ if __name__ == '__main__':
             ax.set_xlabel('Energy [MeV]')
             ax.set_ylabel('Number [1/source]')
             ax.legend()
-        fig.gca().set_title('Neutrons')
+        fig.gca().set_title('Deposited energy by 20MeV neutrons')
 
     fig.savefig('deposicion_Si.png')
     plt.show()

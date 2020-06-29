@@ -6,7 +6,7 @@
        r0 =   0.            # radius [cm]
        y0 =   0.            # minimum position of y-axis [cm]
        y1 =   0.            # maximum position of y-axis [cm]
-       e0 =   2.            # energy of beam [MeV/u] (ignored when ispfs=1,2)
+       e0 =   20.           # energy of beam [MeV/u] (ignored when ispfs=1,2)
 
 [ M a t e r i a l ]
 

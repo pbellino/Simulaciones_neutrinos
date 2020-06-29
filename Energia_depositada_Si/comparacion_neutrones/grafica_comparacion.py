@@ -56,7 +56,7 @@ if __name__ == '__main__':
     zona = '100'
 
     # particles = ['30Si', '31Si', 'positron', 'electron', 'all']
-    particles = ['30Si', 'all']
+    particles = ['all']
 
     data = lee_espectro_phits_eng(archivo, zona)
     normaliza = True
@@ -84,7 +84,7 @@ if __name__ == '__main__':
     ax.set_ylim(1e-7, 1e3)
     ax.legend()
 
-    fig.gca().set_title('Eng. depositada por neutrones de 2MeV en $^{30}$Si')
+    fig.gca().set_title('Eng. depositada por neutrones de 20MeV en $^{30}$Si')
 
     fig.savefig('deposicion_Si_comparada.png')
     plt.show()

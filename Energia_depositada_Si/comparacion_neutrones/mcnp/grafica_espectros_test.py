@@ -20,17 +20,19 @@ if __name__ == '__main__':
     archivo = 'esfera.o'
     labels = [
                'F8 neutrones',
-#              'F8 núcleos',
+               'F8 núcleos',
 #              'F8+PHL neutrones',
                'F8+PHL núcleos',
-               'F8+PHL todas'
+               'F8+PHL todas',
+               'F8+PHL todas sin e-'
               ]
     tallies = [
                '18',
-#               '28',
+                '28',
 #              '118',
                '218',
                '998',
+               '988',
               ]
     normaliza = False
     fig, ax = plt.subplots(1, 1, figsize=(8, 6))
