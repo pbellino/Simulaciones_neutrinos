@@ -47,7 +47,7 @@ c ***************************************************
 c TALLIES
 c ***************************************************
 c Rango de energías para todas las tallies
-E0 1e-5 198I 100
+E0 1e-4 198I 25
 c
 FC14 Neutrones a 6'' de fuente
 F14:n 103
