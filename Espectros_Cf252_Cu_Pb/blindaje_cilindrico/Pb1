@@ -1,19 +1,19 @@
 Fuente de Cf252 sin blindaje y con mesa óptica
 c
 c
-100 1  -1e-10  -1000            imp:n,p=1  $ Cf252
-101 2  -8.0    -1001            imp:n,p=1  $ Mesa óptica (acero inox)
-102 0           1002 -1003      imp:n,p=1  $ Blindaje plomo
-103 0           1003 -1004      imp:n,p=1  $ Espacio blindaje-detector
-104 0          -9999 1001 1004  imp:n,p=1  $ Lab afuera detector
-105 0          -1002 1000       imp:n,p=1  $ Lab adentro blindaje
-999 0           9999            imp:n,p=0  $ Nada
+100 1  -1e-10  -1000                      imp:n,p=1  $ Cf252
+101 2  -8.0    -1001                      imp:n,p=1  $ Mesa óptica (acero inox)
+102 0           1002 -1003                imp:n,p=1  $ Blindaje plomo
+103 4  -2.33   -1004                      imp:n,p=1  $ Detector
+104 0          -1002 1000                 imp:n,p=1  $ Lab dentro blindaje
+105 0          -9999 1001 1003 1004       imp:n,p=1  $ Lab afuera detector
+999 0           9999                      imp:n,p=0  $ Nada
 
-1000 SZ 12.7  0.0001                   $ Esfera para Cf252
+1000 S 0 7.6199 12.7  0.0001           $ Esfera para Cf252
 1001 RCC 0 0 -4 0 0 4 50               $ Mesa óptica (h=4cm, r=50cm
 1002 RCC 0 0 0 0 0 25.4 7.62           $ Cilindro interno blindaje (h=10'', r=3'')
 1003 RCC 0 0 0 0 0 25.4 12.7           $ Cilindro externo blindaje (h=10'', r=5'')
-1004 RCC 0 0 0 0 0 25.4 15.24          $ Cilindro para detector (6'' de la fuente)
+1004 RPP -3 3 14.24 16.24 11.7 13.7    $ Detector (6cm x 2 cm x 2cm) ¡¡¡ancho real 0.02cm!!!
 9999 SO 500                            $ Lab
 
 M1    98252.80c     1       $ Cf252
@@ -37,22 +37,23 @@ M2    6000.80c 1.215E-04 $C
      26057.80c 1.259E-03 $Fe57
      26058.80c 1.676E-04 $Fe58
 M3   82000     1       $ Pb  
+M4   14000     1       $ Si  
 c ***************************************************
 c FUENTE
 c ***************************************************
 c
-SDEF  PAR=-SF POS=0 0 12.7
+SDEF  PAR=-SF POS=0 7.6199 12.7
 c ***************************************************
 c TALLIES
 c ***************************************************
 c Rango de energías para todas las tallies
-E0 1e-5 198ILOG 100
+E0 1e-5 198I 100
 c
-FC11 Neutrones a 6'' de fuente
-F11:n 1004.1
+FC14 Neutrones a 6'' de fuente
+F14:n 103
 c
-FC51 Fotones a 6'' de fuente
-F51:p 1004.1
+FC54 Fotones a 6'' de fuente
+F54:p 103
 c
 c ***************************************************
 c PARAMETROS

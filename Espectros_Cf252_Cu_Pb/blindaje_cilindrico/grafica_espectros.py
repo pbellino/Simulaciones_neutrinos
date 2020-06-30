@@ -15,6 +15,12 @@ from modules.io_modules import lee_tally_E_card
 sns.set()
 
 
+def escribe_espectros(archivo, tal, datos):
+    nombre_out = 'espectro_' + archivo.split('.')[0] + '_' + tal + '.dat'
+    np.savetxt(nombre_out, datos, fmt=['%1.4e', '%1.5e', '%1.4e'])
+    return None
+
+
 if __name__ == '__main__':
 
     archivos = [
@@ -29,29 +35,32 @@ if __name__ == '__main__':
               ]
     fig_n, ax_n = plt.subplots(1, 1, figsize=(8, 6))
     fig_p, ax_p = plt.subplots(1, 1, figsize=(8, 6))
-    tals = ['11', '51']
+    tals = {'neutrones': '14', 'fotones': '54'}
     axs = [ax_n, ax_p]
     for archivo, label in zip(archivos, labels):
         datos, nombre, bins = lee_tally_E_card(archivo)
-        for tal, ax in zip(tals, axs):
-            eng = datos[tal][:, 0]
-            val = datos[tal][:, 1]
-            std_val = datos[tal][:, 2] * val
-            bin_limits = bins[tal]
+        for key, ax in zip(tals.keys(), axs):
+            escribe_espectros(archivo, key, datos[tals[key]])
+            eng = datos[tals[key]][:, 0]
+            val = datos[tals[key]][:, 1]
+            std_val = datos[tals[key]][:, 2] * val
+            bin_limits = bins[tals[key]]
             # Calcula ancho del bin
             bin_width = np.diff(bin_limits, axis=1)[:, 0]
             # Normalizo con ancho del bin
             val = val / bin_width
             std_val = std_val / bin_width
-            ax.errorbar(eng, val, yerr=std_val, fmt='.-', label=label)
+            ax.errorbar(eng, val, yerr=std_val, label=label,
+                        drawstyle='steps-mid')
 
     for ax in axs:
         ax.set_xlabel('Energía [MeV]')
         ax.set_ylabel('# particulas 1/MeV/source')
-        ax.set_xscale('log')
+#        ax.set_xscale('log')
         ax.set_yscale('log')
         ax.legend()
-    ax_p.set_xlim(5e-4, 1e2)
+    ax_p.set_xlim(5e-4, 15)
+    ax_n.set_xlim(5e-4, 25)
 
     ax_n.set_title('Neutrones a 6" de la fuente')
     ax_p.set_title('Fotones a 6" de la fuente')
