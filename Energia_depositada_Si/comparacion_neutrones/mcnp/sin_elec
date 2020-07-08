@@ -35,7 +35,7 @@ F46:t 100
 F56:d 100
 F66:s 100
 F76:a 100
-F86:e 100
+F86:p 100
 c
 FC118 PHL for neutrons
 F118:n 100
@@ -60,13 +60,13 @@ c
 c ***************************************************
 c PARAMETROS
 c ***************************************************
-MODE n p h d t s a # e 
+MODE n p h d t s a # 
 CUT:n J 0 0 0           $ Fuerza captura analógica
 CUT:p J J 0 0           $ Fuerza captura analógica
 CUT:h,t,d,s,a,# J 0 0 0
 CUT:e 2J 0 0
-PHYS:n 6J 1             $ (coilf=1) 
-LCA 9J 1                $ (ilaq=1) use LAQGSM08.03 for all interactions
+PHYS:n 6J 3             $ 
+LCA 9J 1                $ (ilaq) Sólo LAQGSM03.03
 RAND GEN=2 SEED=1
 NPS 1e6
 PRINT
