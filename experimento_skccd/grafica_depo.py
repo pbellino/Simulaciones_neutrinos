@@ -78,7 +78,8 @@ if __name__ == '__main__':
     ax.set_yscale('log')
     ax.set_xlabel('Energy [MeV]')
     ax.set_ylabel('Number [1/MeV/source]')
-    # ax.set_ylim(1e-7, 1e3)
+    ax.set_ylim(1e-4, 1e0)
+    ax.set_xlim(1e-7, 5e-1)
     ax.legend()
 
     title_str = 'Deposited energy in $^{28}$Si by $^{252}$Cf'
