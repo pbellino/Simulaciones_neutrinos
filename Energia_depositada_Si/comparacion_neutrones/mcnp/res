@@ -1,0 +1,40 @@
+Prueba para saber qué nucleidos se forman en ele Si
+c
+c
+100 1  -2.33  -1000    $ Si
+999 0          1000    $ Nada
+
+1000 SO  2.0             $ Esfera para el Si
+
+M1    14028         1             $ Si
+c ***************************************************
+c FUENTE
+c ***************************************************
+c
+SDEF  PAR=n erg=20 
+c ***************************************************
+c TALLIES
+c ***************************************************
+c
+c
+FC28 for electrons
+F28:# 100
+FT28 RES 12025 12027 13027 13028 13030 14027 14029 
+c E28 0 1e-6 198ILOG 100
+c
+c
+c
+c ***************************************************
+c PARAMETROS
+c ***************************************************
+MODE n # p a t h
+IMP:n,#,p,a,t,h  1 0
+CUT:n,#,a,t,h J 0 0 0        $ Fuerza captura analógica
+CUT:p 2J 0 0
+LCA 9J 1                $ (ilaq=1) use LAQGSM08.03 for all interactions
+PHYS:n 6J 1             $ (coilf=1) 
+RAND GEN=2 SEED=1
+NPS 1e6
+PRINT
+
+

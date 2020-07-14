@@ -1,0 +1,77 @@
+Espectros de Cf252 con blindaje de Pb(3cm) + Cu(5cm) - Metodo FREYA (METHOD=6)
+c
+c
+100 1  -2.33  -1000    $ Si
+999 0          1000    $ Nada
+
+1000 SO  2.0             $ Esfera para el Si
+
+M1    14028.80c         1             $ Si
+c ***************************************************
+c FUENTE
+c ***************************************************
+c
+SDEF  PAR=n erg=20 
+c ***************************************************
+c TALLIES
+c ***************************************************
+E0 0 1e-5 198ILOG 100
+c
+FC18 Tally F8 neutrones
+F18:n 100
+E18 0 1e-5 198ILOG 100
+c
+FC28 Tally F8 nuclei
+F28:# 100
+E28 0 1e-5 198ILOG 100
+c
+FC38 Tally for all
+F38:#,h,t,d,s,a,e 100
+E38 0 1e-5 198ILOG 100
+c
+F16:n 100
+F26:# 100
+F36:h 100
+F46:t 100
+F56:d 100
+F66:s 100
+F76:a 100
+F86:e 100
+c F96:p 100
+c
+FC118 PHL for neutrons
+F118:n 100
+FT118 PHL 1 16 1 0 
+E118 0 1e-5 198ILOG 100
+c
+FC218 PHL for nuclei
+F218:n 100
+FT218 PHL 1 26 1 0
+E218 0 1e-5 198ILOG 100
+c
+FC998 PHL todas
+F998:n 100
+FT998 PHL 7 26 1 36 1 46 1 56 1 66 1 76 1 86 1 0
+E998 0 1e-5 198ILOG 100
+c
+FC988 PHL todas sin electrones
+F988:n 100
+FT988 PHL 6 26 1 36 1 46 1 56 1 66 1 76 1 0
+E988 0 1e-5 198ILOG 100
+c
+c ***************************************************
+c PARAMETROS
+c ***************************************************
+MODE n p h d t s a # e
+CUT:n J 0 0 0           $ Fuerza captura analógica
+CUT:p J J 0 0           $ Fuerza captura analógica
+CUT:h,t,d,s,a,# J 0 0 0
+CUT:e 2J 0 0
+IMP:n,p,h,d,t,s,a,#,e   1 0
+PHYS:n 6J 4             $ (coilf=1) 
+LCA 9J 1                $ (ilaq=1) use LAQGSM08.03 for all interactions
+RAND GEN=2 SEED=1 STRIDE=1048576
+NPS 1e6
+PRINT
+
+
