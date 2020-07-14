@@ -18,17 +18,17 @@ sns.set()
 
 if __name__ == '__main__':
 
-    archivo = 'mcnp/esfera.o'
+    archivo = 'mcnp/esfera_con_e.o'
     labels = [
                'F8 neutrones',
-               # 'F8+PHL núcleos',
-               'F8+PHL todas'
+               'F8 todas',
+#               'F8+PHL todas'
               ]
     labels = ['MCNP-' + s for s in labels]
     tallies = [
                '18',
-               # '218',
-               '998',
+               '38',
+#               '998',
               ]
     normaliza = True
     fig, ax = plt.subplots(1, 1, figsize=(8, 6))
@@ -84,7 +84,7 @@ if __name__ == '__main__':
     ax.set_ylim(1e-7, 1e3)
     ax.legend()
 
-    fig.gca().set_title('Eng. depositada por neutrones de 20MeV en $^{30}$Si')
+    fig.gca().set_title('Eng. depositada por neutrones de 20MeV en $^{28}$Si')
 
     fig.savefig('deposicion_Si_comparada.png')
     plt.show()

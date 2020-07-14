@@ -25,4 +25,4 @@
 ## Resultados
 
 
-![Energía depositada en silicio](espectros_neutrones_esfera.png)
+![Energía depositada en silicio](espectros_esfera_con_e.png)

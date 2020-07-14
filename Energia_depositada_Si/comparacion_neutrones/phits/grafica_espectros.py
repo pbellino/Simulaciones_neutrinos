@@ -22,7 +22,7 @@ if __name__ == '__main__':
             ]
 
     fig, ax = plt.subplots(1, 1)
-    particles = ['30Si', '31Si', 'positron', 'electron', 'alpha', 'all']
+    particles = ['28Si', '25Mg', 'positron', 'electron', 'alpha', 'all']
 
     for zona in zonas:
         data = lee_espectro_phits_eng(archivo, zona)

@@ -17,22 +17,24 @@ sns.set()
 
 if __name__ == '__main__':
 
-    archivo = 'esfera.o'
+    archivo = 'esfera_con_e.o'
     labels = [
                'F8 neutrones',
                'F8 núcleos',
-#              'F8+PHL neutrones',
+               'F8 all',
+#               'F8+PHL neutrones',
                'F8+PHL núcleos',
                'F8+PHL todas',
-               'F8+PHL todas sin e-'
+#               'F8+PHL todas sin e-'
               ]
     tallies = [
                '18',
-                '28',
+               '28',
+               '38',
 #              '118',
                '218',
                '998',
-               '988',
+#               '988',
               ]
     normaliza = False
     fig, ax = plt.subplots(1, 1, figsize=(8, 6))
@@ -56,7 +58,7 @@ if __name__ == '__main__':
 
     ax.set_title('Gráfico del archivo ' + archivo)
     ax.legend()
-    nom_graf = 'espectros_neutrones_'
-    nom_graf += archivo.split('.')[0].split('_')[-1] + '.png'
+    nom_graf = 'espectros_'
+    nom_graf += archivo.split('.')[0] + '.png'
     fig.savefig(nom_graf)
     plt.show()

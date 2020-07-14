@@ -51,7 +51,7 @@ infl: {experimento_phits}
        ne =  200            # number of e-mesh points
      axis =   eng           # axis of output
      file = deposit_Si.out  # file name of output for the above axis
-     part = Si30 Si31 electron positron alpha all
+     part = Si28 Mg25 electron positron alpha all
    epsout =    1            # (D=0) generate eps file by ANGEL
 $   dresol =  0.2            # (D=0) width = sqrt(dresol**2 + dfano*E)
 $    dfano =  0.05           # (D=0) width = sqrt(dresol**2 + dfano*E)
