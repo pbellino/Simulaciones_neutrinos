@@ -1,7 +1,7 @@
 #! /bin/bash
 
 # Input que voy a procesar
-ARCHIVO=skccd_phits.inp
+ARCHIVO=skccd_phits_depo.inp
 
 # Ejecuto PHITS
 phits.sh ${ARCHIVO}
