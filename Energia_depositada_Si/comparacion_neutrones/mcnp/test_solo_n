@@ -1,0 +1,44 @@
+Prueba para estudiar los picos de alfa y protones
+c
+c
+100 1  -2.33  -1000    $ Si
+999 0          1000    $ Nada
+
+1000 SO  2.0             $ Esfera para el Si
+
+M1    14028.80c         1             $ Si
+c ***************************************************
+c FUENTE
+c ***************************************************
+c
+SDEF  PAR=n erg=20 
+c ***************************************************
+c TALLIES
+c ***************************************************
+E0 0 1e-5 198ILOG 100
+c
+FC18 Tally F8 neutrones
+F18:n 100
+E18 0 1e-5 198ILOG 100
+c
+F16:n 100
+c
+FC118 PHL for neutrons
+F118:n 100
+FT118 PHL 1 16 1 0 
+E118 0 1e-5 198ILOG 100
+c
+c
+c ***************************************************
+c PARAMETROS
+c ***************************************************
+MODE n
+CUT:n J 0 0 0           $ Fuerza captura analógica
+IMP:n   1 0
+PHYS:n 6J 4             $ (coilf=1) 
+LCA 9J 1                $ (ilaq=1) use LAQGSM08.03 for all interactions
+RAND GEN=2 SEED=1 STRIDE=1048576
+NPS 1e7
+PRINT
+
+
