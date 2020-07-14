@@ -36,7 +36,34 @@ se simula el siguiente esquema:
 
 - Cuando se activa negs=1 en PHITS no puede estar el material Cf252 (no existen los datos). Esto no es problema porque (a diferencia de MCNP), PHITS no requiere que exista el material Cf252 para generar una fuente de CF252.
 
-#### TODO:
+-------------------------------
+
+### Energía depositada en Si 
+
+**En PHITS**:
+
+* Están simuladas todas las partículas y se pide energía depositada total.
+
+**En MCNP**:
+
+* Se simuló sólo neutrones y fotones.
+
+* Se pidió energía depositada por neutrones y fotones.
+
+* En otras pruebas se comprobó que la energía depositada simulada de esta manera es similar a haber simulado núcleos residuales y demás partículas (al menos desde 1keV hasta 1MeV aprox). Más allá de eso habría que correr con todas las partículas.
+
+#### Notas:
+
+* No se simularon los fotones de la fuente de californio. El aporte no es significativo (con este blindaje) frente a los fotones que se generan en el resto de los materiales.
+
+* Incluir los fotones de la fuente implica:
+    - MCNP no se puede paralelizar
+    - En PHITS el espectro de fotones del Cf debe incluirse por separado
+
+![Energía depositada total en Si](deposited_Si_comp.png)
+
+
+### TODO:
 
 - Revisar el bineado entre PHITS y MCNP, los datos parecen estar desplazados en un bin de energía.
 

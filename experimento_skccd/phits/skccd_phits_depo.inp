@@ -4,8 +4,8 @@ Skipper CCD with lead and cooper shield using Cf252 source
 
 [ P a r a m e t e r s ]
  icntl    =           0     # (D=0) 3:ECH 5:NOR 6:SRC 7,8:GSH 11:DSH 12:DUMP
- maxcas   =        100     # (D=10) number of particles per one batch
- maxbch   =        100     # (D=10) number of batches
+ maxcas   =        5000    # (D=10) number of particles per one batch
+ maxbch   =        1000     # (D=10) number of batches
  file(1)  = /mnt/hdpablo/pablo/phits/phits        # (D=/mnt/hdpablo/pablo/phits/phits) PHITS install folder name
  file(6)  = phits.out       # (D=phits.out) general output file name
     ndedx = 2

@@ -1,10 +1,10 @@
 0 <--- number of remaining batches 
 
 -------------------------------------------------------------------------------
-bat[    1000] ncas =        1000000. : rijk    =  59874901059833.
-       low neutron =           1000. : ncall/s =  1.001857000E+03
-          cpu time =   3.214 s.
+bat[    1000] ncas =        5000000. : rijk    = 230050802031225.
+       low neutron =           5000. : ncall/s =  1.018513600E+03
+          cpu time =   5.984 s.
 
- date = 2020-06-24
- time = 14h 35m 27
+ date = 2020-07-14
+ time = 15h 57m 36
 
