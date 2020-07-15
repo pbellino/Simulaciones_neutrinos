@@ -22,7 +22,8 @@ if __name__ == '__main__':
 
     fig, ax = plt.subplots(1, 1)
     particles = ['28Si', '25Mg', 'positron', 'electron', 'alpha', 'all']
-    particles = ['all']
+    particles = ['28Si', 'electron', 'all']
+#    particles = ['all']
 
     for zona in zonas:
         data = lee_espectro_phits_eng(archivo, zona)
@@ -32,7 +33,7 @@ if __name__ == '__main__':
             val = data[part][:, 0]
             std_val = val * data[part][:, 1]
             (_, caps, _) = ax.errorbar(eng, val, yerr=std_val, fmt='.-',
-                                       label=zona, capsize=3,
+                                       label=part, capsize=3,
                                        drawstyle='steps-mid',
                                        )
             for cap in caps:
@@ -42,6 +43,7 @@ if __name__ == '__main__':
             ax.set_xlabel('Energy [MeV]')
             ax.set_ylabel('Number [1/source]')
             ax.legend()
+            ax.set_ylim(1e-7, 2e-3)
         fig.gca().set_title('Deposited energy')
 
     fig.savefig('deposited_Si.png')
