@@ -1,0 +1,103 @@
+[ S o u r c e ]
+
+   s-type =   1             # mono-energetic axial source
+     proj =   252Cf         # kind of incident particle         
+      dir =   all           # z-direction of beam [cosine]
+       r0 =   0.            # radius [cm]
+       y0 =   7.6199        # minimum position of y-axis [cm]
+       y1 =   7.6199        # maximum position of y-axis [cm]
+       z0 =   12.7
+       e0 =   0.            # energy of beam [MeV/u] (ignored when ispfs=1,2)
+    ispfs =   1             # Netron source from spontaneous fission
+                            # Tally result normalized by number of spontaneous fissions
+
+[ M a t e r i a l ]
+
+$ mat[1]    98252.80c     1       $ Cf252
+$ ---- Acero inoxidable AISI 304L (dens=7.99 g/cm3) --
+mat[2]    6000    1.215E-04    $ C
+         25055    1.751E-03    $ Mn55
+         14028    1.580E-03    $ Si28
+         14029    8.022E-05    $ Si29
+         14030    5.288E-05    $ Si30
+         24050    7.639E-04    $ Cr50
+         24052    1.473E-02    $ Cr52
+         24053    1.670E-03    $ Cr53
+         24054    4.158E-04    $ Cr54
+         28058    5.023E-03    $ Ni58
+         28060    1.935E-03    $ Ni60
+         28061    8.411E-05    $ Ni61
+         28062    2.681E-04    $ Ni62
+         28064    6.832E-05    $ Ni64
+         26054    3.473E-03    $ Fe54
+         26056    5.452E-02    $ Fe56
+         26057    1.259E-03    $ Fe57
+         26058    1.676E-04    $ Fe58
+$ ---- Plomo natural  (dens=11.32 g/cm3) -----------
+mat[3]   82208    0.524        $ Pb208  
+         82206    0.241        $ Pb206  
+         82207    0.221        $ Pb207  
+         82204    0.014        $ Pb204  
+mat[4]   14028    1            $ Si28  
+mat[5]   13027    1            $ Al27 
+$ ---- Borosilicato - Pyrex (dens=2.23 g/cm3) ------
+mat[6]    5010    0.014019    $ B10
+          5011    0.056430    $ B11
+          8016    0.641095    $ O16 
+         11023    0.023311    $ Na23
+         13027    0.008204    $ Al27
+         14000    0.255327    $ Si
+         19000    0.001615    $ K 
+
+
+[ Mat Name Color ]
+
+mat     name 
+$ 1       Californium
+2       Stainless Steel
+3       Lead
+4       Silicon
+5       Aluminium
+6       Borosilicate glass
+
+
+[ S u r f a c e ]
+
+$ ¡¡¡Si se cambia la geometría, hay que volver a calcular el volumen!!!
+
+1000 S 0 7.6199 12.7  0.0001           $ Esfera para Cf252
+1001 RCC 0 0 -4 0 0 4 50               $ Mesa óptica (h=4cm, r=50cm)
+1002 RCC 0 0 0 0 0 25.4 7.62           $ Cilindro interno blindaje (h=10'', r=3'')
+1003 RCC 0 0 0 0 0 25.4 12.7           $ Cilindro externo blindaje (h=10'', r=5'')
+1004 RPP -3 3 16.69 16.71 11.7 13.7    $ Detector (6cm x 2 cm x 0.02cm) 
+1005 RCC 0 12.7001 12.7 0 2.4999 0 8   $ Ventana del dewar (h=2.5cm, r=8cm)
+1006 RCC 0 15.2 12.7 0 1.0 0 8         $ Vidrio del dewar (h=1cm, r=8cm)
+1007 RPP -12.5 12.5 14.7 39.7 0 25     $ Pared externa dewar (25cm x 25cm x 25cm)
+1008 RPP -10.5 10.5 16.2 38.2 2 23     $ Pared interna dewar (21cm x 22cm x 21cm)
+9999 SO 500                            $ Lab
+
+
+[ C e l l ]
+
+100  0          -1000                          $ Cf252
+101  2  -8.0    -1001                          $ Mesa óptica (acero inox)
+102  3  -11.32   1002 -1003                    $ Blindaje plomo
+103  4  -2.33   -1004                          $ Detector
+104  0          -1002 1000                     $ Lab dentro blindaje
+105  5  -2.7    -1007 1008 1005 1006           $ Dewar de aluminio
+106  0          -1005                          $ Ventana del dewar
+107  6  -2.23   -1006                          $ Vidrio del dewar
+108  0          -1008 1004                     $ Interior dewar
+109  0          -9999 1001 1003 1005 1007      $ Lab afuera dewar
+999 -1           9999                          $ Nada
+
+
+[ V o l u m e ] off
+    reg         vol
+    100     4.18880E-12             $ Cf252
+    101     3.14159E+04             $ Mesa óptica (acer inox)
+    102     8.23704E+03             $ Blindaje plomo
+    103     2.40000E-01             $ Detector
+    106     5.02635E+02             $ Ventana del dewar
+    107     2.01062E+02             $ Vidrio del dewar
+    108     9.70176E+03             $ Interior dewar
