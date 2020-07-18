@@ -18,7 +18,7 @@ sns.set()
 
 if __name__ == '__main__':
 
-    archivo = 'mcnp/skccd_depo.o'
+    archivo = 'mcnp/skccd.o'
     labels = [
                'Total',
               ]

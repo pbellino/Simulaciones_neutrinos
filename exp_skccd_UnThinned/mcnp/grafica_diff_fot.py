@@ -18,8 +18,8 @@ sns.set()
 if __name__ == '__main__':
 
     archivos = [
-                'skccd_depo_pCf.o',
-                'skccd_depo.o',
+                'skccd_pCf.o',
+                'skccd.o',
                 ]
     labels = [
               'With photons from Cf',
@@ -36,7 +36,7 @@ if __name__ == '__main__':
     normaliza = True  # Se divide por el bin de energía
     limits = [
                [0, 3e-2],
-               [0, 1]
+               [0, 0.5]
              ]
     for arch, label in zip(archivos, labels):
         datos, nombre, bins = lee_tally_E_card(arch)
@@ -60,7 +60,7 @@ if __name__ == '__main__':
             # ax.set_xscale('log')
             ax.set_yscale('log')
             ax.set_xlim(lim)
-            ax.set_ylim(1e-4, 1e-1)
+            ax.set_ylim(5e-5, 1e-2)
             ax.legend()
 
     axs[0].set_ylabel(ylabel)

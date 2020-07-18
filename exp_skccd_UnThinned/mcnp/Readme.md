@@ -31,7 +31,7 @@ Se simula una fuente de Cf252 que emite neutrons y fotones.
 
 **Resultado preliminar**:
 
-![Deposited energy in silicon](espectros_skccd_depo.png)
+![Deposited energy in silicon](espectros_skccd.png)
 
 
 **Para referencia**:
@@ -40,7 +40,7 @@ La única corrda que se hizo con fotones provenientes del Cf252.
 
 Resultados en el archivo `skccd_depo_pCf.o`
 
-![Deposited energy in silicon including photons from Cf252](espectros_skccd_depo_pCf.png)
+![Deposited energy in silicon including photons from Cf252](espectros_skccd_pCf.png)
 
 
 ![Deposited energy by photons with and without taking into accout the photon emission from the Cf source](espectros_photons_from_Cf.png)

@@ -17,7 +17,7 @@ sns.set()
 
 if __name__ == '__main__':
 
-    archivo = 'skccd_depo.o'
+    archivo = 'skccd_pCf.o'
     labels = [
               'Neutrons',
               'Photons',
@@ -33,7 +33,7 @@ if __name__ == '__main__':
     normaliza = True  # Se divide por el bin de energía
     limits = [
                [0, 3e-2],
-               [0, 1]
+               [0, 0.5]
              ]
     for tal, label in zip(tallies, labels):
         datos, nombre, bins = lee_tally_E_card(archivo)
@@ -57,7 +57,7 @@ if __name__ == '__main__':
             # ax.set_xscale('log')
             ax.set_yscale('log')
             ax.set_xlim(lim)
-            ax.set_ylim(1e-4, 1e0)
+            ax.set_ylim(1e-5, 1e-1)
             ax.legend()
 
     axs[0].set_ylabel(ylabel)

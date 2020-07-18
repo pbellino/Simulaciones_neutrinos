@@ -4,8 +4,8 @@ Skipper CCD with lead and cooper shield using Cf252 source
 
 [ P a r a m e t e r s ]
  icntl    =           0     # (D=0) 3:ECH 5:NOR 6:SRC 7,8:GSH 11:DSH 12:DUMP
- maxcas   =        5000    # (D=10) number of particles per one batch
- maxbch   =        1000     # (D=10) number of batches
+ maxcas   =       10000    # (D=10) number of particles per one batch
+ maxbch   =       10000     # (D=10) number of batches
  file(1)  = /mnt/hdpablo/pablo/phits/phits        # (D=/mnt/hdpablo/pablo/phits/phits) PHITS install folder name
  file(6)  = phits.out       # (D=phits.out) general output file name
     ndedx = 2
@@ -32,7 +32,7 @@ infl: {experimento_phits}
    output = deposit         # deposit enerygy distribution
    e-type =    2            # e-mesh is linear given by emin, emax and ne
      emin =   1e-5         # minimum value of e-mesh points
-     emax =   1.0          # maximum value of e-mesh points
+     emax =   0.5          # maximum value of e-mesh points
        ne =  200            # number of e-mesh points
      axis =   eng           # axis of output
      file = deposit_Si.out  # file name of output for the above axis

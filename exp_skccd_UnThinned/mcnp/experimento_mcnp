@@ -17,7 +17,7 @@ c ************************************************************************
 1000 SY  -0.0001 0.0001                            $ Esfera para Cf252
 1001 RPP -10.16 10.16 0       3.04799 -15.24 15.24 $ Blindaje Pb
 1002 RPP -10.16 10.16 8.128   13.208  -15.24 15.24 $ Blindaje Cu inferior
-1003 RPP -4.5   4.5   13.208  13.2755 -15    15    $ Silicio (Skipper CCD)
+1003 RPP -4.5   4.5   13.208  13.2755 -1.5    1.5  $ Silicio (Skipper CCD)
 1004 RPP -10.16 10.16 13.2755 18.3555 -15.24 15.24 $ Blindaje Cu superior
 1005 RCC 0 18.288 -22.86 0 0 45.72 15.24           $ Cámara de vacío externa
 1006 RCC 0 18.288 -22.16 0 0 44.02 14.54           $ Cámara de vacío interna
