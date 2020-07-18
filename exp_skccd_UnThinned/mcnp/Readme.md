@@ -13,6 +13,10 @@ Se simula una fuente de Cf252 que emite neutrons y fotones.
 
 * `run_mcnp.sh` : script auxiliar para correr el input
 
+* `skccd_depo.o`: salida de la simulación usando sólo neutrones (FMULT=3)
+
+* `skccd_depo_pCf.o`: salida de la simulación usando neutrones y fotones (FMULT=5)
+
 
 **Notas**: 
 
