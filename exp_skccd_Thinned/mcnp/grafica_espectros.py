@@ -24,18 +24,14 @@ def escribe_espectros(archivo, tal, datos):
 if __name__ == '__main__':
 
     archivos = [
-                'Pb0.o',
-                'Pb1.o',
-                'Pb2.o',
+                'skccd_thinned.o',
                ]
     labels = [
-              'Sin mesa óptica y sin blindaje',
-              'Con mesa óptica y sin blindaje',
-              'Con mesa óptica y con blindaje',
+              'Flujo de partículas',
               ]
     fig_n, ax_n = plt.subplots(1, 1, figsize=(8, 6))
     fig_p, ax_p = plt.subplots(1, 1, figsize=(8, 6))
-    tals = {'neutrones': '14', 'fotones': '54'}
+    tals = {'neutrones': '14', 'fotones': '514'}
     axs = [ax_n, ax_p]
     for archivo, label in zip(archivos, labels):
         datos, nombre, bins = lee_tally_E_card(archivo)
@@ -56,7 +52,7 @@ if __name__ == '__main__':
     for ax in axs:
         ax.set_xlabel('Energía [MeV]')
         ax.set_ylabel('# particulas 1/MeV/source')
-#        ax.set_xscale('log')
+        ax.set_xscale('log')
         ax.set_yscale('log')
         ax.legend()
     ax_p.set_xlim(5e-4, 15)
