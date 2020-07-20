@@ -43,7 +43,7 @@ if __name__ == '__main__':
             ax.set_xlabel('Energy [MeV]')
             ax.set_ylabel('Number [1/source]')
             ax.legend()
-            ax.set_ylim(1e-7, 2e-3)
+            ax.set_ylim(1e-8, 2e-4)
         fig.gca().set_title('Deposited energy')
 
     fig.savefig('deposited_Si.png')
