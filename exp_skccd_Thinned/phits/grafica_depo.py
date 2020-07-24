@@ -23,7 +23,6 @@ if __name__ == '__main__':
     fig, ax = plt.subplots(1, 1)
     particles = ['28Si', '25Mg', 'positron', 'electron', 'alpha', 'all']
     particles = ['28Si', 'electron', 'all']
-#    particles = ['all']
 
     for zona in zonas:
         data = lee_espectro_phits_eng(archivo, zona)
@@ -43,7 +42,8 @@ if __name__ == '__main__':
             ax.set_xlabel('Energy [MeV]')
             ax.set_ylabel('Number [1/source]')
             ax.legend()
-            ax.set_ylim(1e-7, 2e-3)
+            ax.set_xlim(0, 5e-1)
+            ax.set_ylim(1e-8, 2e-5)
         fig.gca().set_title('Deposited energy')
 
     fig.savefig('deposited_Si.png')
