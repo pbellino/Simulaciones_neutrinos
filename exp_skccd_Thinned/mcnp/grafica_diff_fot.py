@@ -17,18 +17,20 @@ sns.set()
 
 if __name__ == '__main__':
 
-    archivo = 'skccd_thinned.o'
-    archivo = 'skccd_thinned_pCf.o'
+    archivos = [
+                'skccd_thinned_pCf.o',
+                'skccd_thinned.o',
+                ]
     labels = [
-              'Neutrons',
-              'Photons',
-              'Total',
+              'With photons from Cf',
+              'Without photons from Cf',
               ]
-    tallies = [
-               '18',
-               '518',
-               '918',
-              ]
+    tally = '518'
+    # tallies = [
+    #            '18',
+    #            '518',
+    #            '918',
+    #           ]
     fig, axs = plt.subplots(1, 2, figsize=(10, 6), sharey=True)
     start = 2  # Punto al parti del cual se grafica (para los bines negativos)
     normaliza = True  # Se divide por el bin de energía
@@ -36,13 +38,13 @@ if __name__ == '__main__':
                [0, 3e-2],
                [0, 0.5]
              ]
-    for tal, label in zip(tallies, labels):
-        datos, nombre, bins = lee_tally_E_card(archivo)
-        eng = datos[tal][start:, 0]
-        val = datos[tal][start:, 1]
-        std_val = datos[tal][start:, 2] * val
+    for arch, label in zip(archivos, labels):
+        datos, nombre, bins = lee_tally_E_card(arch)
+        eng = datos[tally][start:, 0]
+        val = datos[tally][start:, 1]
+        std_val = datos[tally][start:, 2] * val
         if normaliza:
-            bin_limits = bins[tal]
+            bin_limits = bins[tally]
             # Calcula ancho del bin
             bin_width = np.diff(bin_limits, axis=1)[start:, 0]
             # Normalizo con ancho del bin
@@ -58,13 +60,12 @@ if __name__ == '__main__':
             # ax.set_xscale('log')
             ax.set_yscale('log')
             ax.set_xlim(lim)
-            ax.set_ylim(1e-6, 1e-2)
+            ax.set_ylim(4e-6, 5e-4)
             ax.legend()
 
     axs[0].set_ylabel(ylabel)
-    fig.suptitle('DRAFT - Deposited energy (file: ' + archivo + ')')
-    nom_graf = 'espectros_'
-    nom_graf += archivo.split('.')[0] + '.png'
+    fig.suptitle('DRAFT - Deposited energy by photons')
+    nom_graf = 'espectros_photons_from_Cf.png'
     fig.tight_layout()
     fig.savefig(nom_graf)
     plt.show()

@@ -31,7 +31,7 @@ if __name__ == '__main__':
               ]
     fig_n, ax_n = plt.subplots(1, 1, figsize=(8, 6))
     fig_p, ax_p = plt.subplots(1, 1, figsize=(8, 6))
-    tals = {'neutrones': '14', 'fotones': '514'}
+    tals = {'neutrones': '24', 'fotones': '524'}
     axs = [ax_n, ax_p]
     for archivo, label in zip(archivos, labels):
         datos, nombre, bins = lee_tally_E_card(archivo)
@@ -56,7 +56,7 @@ if __name__ == '__main__':
         ax.set_yscale('log')
         ax.legend()
     ax_p.set_xlim(5e-4, 15)
-    ax_n.set_xlim(5e-4, 25)
+    ax_n.set_xlim(1e-6, 25)
 
     ax_n.set_title('Neutrones a 6" de la fuente')
     ax_p.set_title('Fotones a 6" de la fuente')

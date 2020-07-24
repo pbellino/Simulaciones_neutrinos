@@ -45,6 +45,6 @@ CUT:p J J 0 0           $ Fuerza captura analógica
 PHYS:n 6J 4             $ (colif=4) Generación de núcleos en scattering
 LCA 9J 1                $ (ilaq=1) use LAQGSM08.03 for all interactions
 RAND GEN=2 SEED=1
-NPS 5e6
+NPS 1e10 
 PRINT
 
