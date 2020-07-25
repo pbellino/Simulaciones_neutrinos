@@ -17,7 +17,7 @@ sns.set()
 
 if __name__ == '__main__':
 
-    archivo = 'skccd_pCf.o'
+    archivo = 'skccd.o'
     labels = [
               'Neutrons',
               'Photons',
@@ -61,7 +61,7 @@ if __name__ == '__main__':
             ax.legend()
 
     axs[0].set_ylabel(ylabel)
-    fig.suptitle('DRAFT - Deposited energy (file: ' + archivo + ')')
+    fig.suptitle('Deposited energy (file: ' + archivo + ')')
     nom_graf = 'espectros_'
     nom_graf += archivo.split('.')[0] + '.png'
     fig.tight_layout()
