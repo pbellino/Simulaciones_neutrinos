@@ -34,3 +34,7 @@
 
 ![Energía depositada total en Si](deposited_Si_comp.png)
 
+
+## TODO
+
+* Analizar los saltos en las curvas. Mirar XS.
