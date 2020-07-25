@@ -47,6 +47,7 @@ Notas:
 
 - Con las pruebas hasta ahora (1e6 partículas), en ningún caso hubo deposición de energía de fotones.
 
+- Tiempo de ejecución (95 +1 cores) para $10^9$ fisiones espontáneas : 2.36hs (wall time)
 
 ### Resultados:
 
