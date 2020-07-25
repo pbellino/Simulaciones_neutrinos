@@ -35,3 +35,5 @@ Notas:
 
 ### Resultados:
 
+![Deposición de energía en silicio](deposited_Si.png)
+
