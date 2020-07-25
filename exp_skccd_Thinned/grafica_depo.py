@@ -23,8 +23,8 @@ if __name__ == '__main__':
                 'mcnp/skccd_thinned.o',
                ]
     labels = [
-               'Total',
-               'Total sin fotones del Cf',
+              'with phtons from Cf',
+               'without photons from Cf',
               ]
     labels = ['MCNP-' + s for s in labels]
     tally = '918'
@@ -57,6 +57,8 @@ if __name__ == '__main__':
     # particles = ['30Si', '31Si', 'positron', 'electron', 'all']
     particles = ['all']
 
+    label = 'PHITS - without photons from Cf'
+
     data = lee_espectro_phits_eng(archivo, zona)
     normaliza = True
     # Puntos centrados en el bin
@@ -71,7 +73,7 @@ if __name__ == '__main__':
             std_val = std_val / bin_width
 
         (_, caps, _) = ax.errorbar(eng, val, yerr=std_val, fmt='.-',
-                                   label='PHITS-'+part, capsize=3,
+                                   label=label, capsize=3,
                                    )
         for cap in caps:
             cap.set_markeredgewidth(1)
@@ -85,7 +87,7 @@ if __name__ == '__main__':
     ax.legend()
 
     title_str = 'Deposited energy in $^{28}$Si by $^{252}$Cf'
-    title_str += '\n (without photons from the source)'
+    # title_str += '\n (without photons from the source)'
     fig.gca().set_title(title_str)
 
     fig.savefig('deposited_Si_comp.png')
