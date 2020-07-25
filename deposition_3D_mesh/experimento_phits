@@ -1,0 +1,36 @@
+[ S o u r c e ]
+
+   s-type =   1             # mono-energetic axial source
+     proj =   alpha         # kind of incident particle         
+      dir =   0.0           # z-direction of beam [cosine]
+       r0 =   0.            # radius [cm]
+       x0 =  -3.09451        # minimum position of y-axis [cm]
+       x1 =  -3.09451         # maximum position of y-axis [cm]
+       phi =    0.0
+       dom =    0.0
+       e0 =   100.         # energy of beam [MeV/u] (ignored when ispfs=1,2)
+
+[ M a t e r i a l ]
+
+mat[1]    Si28 1
+
+[ Mat Name Color ]
+
+mat     name 
+1       Silicon
+
+
+[ S u r f a c e ]
+
+1000 RPP -3.0945 3.0945 -0.6645 0.6645 -0.01 0.01    $ Silicio (Skipper CCD)
+9999 SO 40                                           $ Laboratorio
+
+
+[ C e l l ]
+100   1  -2.33   -1000                    $ Silicio (Skipper CCD)
+101   0           1000 -9999              $ Laboratorio
+999  -1           9999                    $ Nada
+
+[ V o l u m e ] off
+    reg         vol
+    100    1.645036E-01    $ Silicio (Skipper CCD)
