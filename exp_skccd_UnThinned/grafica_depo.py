@@ -18,24 +18,26 @@ sns.set()
 
 if __name__ == '__main__':
 
-    archivo = 'mcnp/skccd.o'
+    archivos = [
+                'mcnp/skccd_pCf.o',
+                'mcnp/skccd.o',
+               ]
     labels = [
-               'Total',
+               'Total con fotones del Cf',
+               'Total sin fotones del Cf',
               ]
     labels = ['MCNP-' + s for s in labels]
-    tallies = [
-               '918',
-              ]
+    tally = '918'
     normaliza = True
     fig, ax = plt.subplots(1, 1, figsize=(8, 6))
     start = 2
-    for tal, label in zip(tallies, labels):
+    for archivo, label in zip(archivos, labels):
         datos, nombre, bins = lee_tally_E_card(archivo)
-        eng = datos[tal][start:, 0]
-        val = datos[tal][start:, 1]
-        std_val = datos[tal][start:, 2] * val
+        eng = datos[tally][start:, 0]
+        val = datos[tally][start:, 1]
+        std_val = datos[tally][start:, 2] * val
         if normaliza:
-            bin_limits = bins[tal]
+            bin_limits = bins[tally]
             # Calcula ancho del bin
             bin_width = np.diff(bin_limits, axis=1)[start:, 0]
             # Normalizo con ancho del bin
