@@ -64,7 +64,7 @@ if __name__ == '__main__':
             ax.legend()
 
     axs[0].set_ylabel(ylabel)
-    fig.suptitle('DRAFT - Deposited energy by photons')
+    fig.suptitle('Deposited energy by photons')
     nom_graf = 'espectros_photons_from_Cf.png'
     fig.tight_layout()
     fig.savefig(nom_graf)
