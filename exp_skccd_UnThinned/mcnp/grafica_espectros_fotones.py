@@ -19,9 +19,9 @@ if __name__ == '__main__':
 
     archivo = 'skccd.o'
     labels = [
-              'Flujo en el Pb',
-              'Flujo en el Cu inferior',
-              'Flujo en el Si',
+              'In Pb',
+              'In Cu (botom)',
+              'In Si',
               ]
     tallies = [
                '514',
@@ -40,15 +40,16 @@ if __name__ == '__main__':
         # Normalizo con ancho del bin
         val = val / bin_width
         std_val = std_val / bin_width
-        ax.errorbar(eng, val, yerr=std_val, fmt='.-', label=label)
-        ax.set_xlabel('Energía [MeV]')
-        ax.set_ylabel('Valores / MeV')
+        ax.errorbar(eng, val, yerr=std_val, fmt='.-', label=label,
+                    drawstyle='steps-mid')
+        ax.set_xlabel('Energy [MeV]')
+        ax.set_ylabel('Flux [1 / cm$^2$ / MeV / SF]')
         ax.set_xscale('log')
         ax.set_yscale('log')
-        ax.set_xlim(1e-5, 1e2)
+        ax.set_xlim(8e-4, 2e1)
         ax.set_ylim(1e-8, 1e-2)
 
-    ax.set_title('Espectros de fotones (archivo ' + archivo + ')')
+    ax.set_title('Photom spectrum (file ' + archivo + ')')
     ax.legend()
     nom_graf = 'espectros_fotones_'
     nom_graf += archivo.split('.')[0].split('_')[-1] + '.png'

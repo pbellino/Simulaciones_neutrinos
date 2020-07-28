@@ -17,7 +17,7 @@ sns.set()
 
 if __name__ == '__main__':
 
-    archivo = 'skccd.o'
+    archivo = 'skccd_pCf.o'
     labels = [
               'Neutrons',
               'Photons',
