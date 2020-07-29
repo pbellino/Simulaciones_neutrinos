@@ -89,7 +89,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Información de los autores
 \title{Avances en la simulación para optimización del blindaje en $\nu$IOLETA}
-    \author[$\nu$VIOLETA]{Pablo Bellino}
+    \author[$\nu$IOLETA]{Pablo Bellino}
 
 \institute{Física Experimental de Reactores, CNEA}
 \date{29 de julio de 2020}
@@ -102,27 +102,27 @@
 
 \begin{frame}{Introducción}
     \begin{block}<+->{Objetivo}
-        Validar una línea de cálculo para luego poder realizar la optimización del blindaje que se utilizará en el experimento $\nu$IOLETA.
+        Validar una línea de cálculo para luego poder realizar la optimización del blindaje que se utilizará en el experimento $\nu$IOLETA
       
     \end{block}
     \begin{block}<+->{Modelo}
         \begin{itemize}
-          \item<+-> Será necesario simular partículas con un amplio rango de energías (1eV-1GeV)
+          \item<+-> Será necesario simular partículas con un amplio rango de energías (eV - GeV)
           \item<+-> Una opción es trabajar con distintos programas para distintos rangos
           \item<+-> Para validar los modelos y programas se pueden comparar entre ellos (en los rangos donde solapan el rango de trabajo) y también comparar con datos experimentales
           \item<+-> En esta charla se mostrarán los avances realizados para validar el modelado de un experimento con skippers-CCD con los programas MCNP y PHITS
-          \item<+-> Se comienza trabajando en el rango de energías más cómodo (keV-MeV) donde los programas suelen funcionar muy bien
+          \item<+-> Se comienza trabajando en el rango de energías más cómodo (keV - MeV) donde estos programas suelen funcionar muy bien
         \end{itemize}
     \end{block}
 \end{frame}
 
-\begin{frame}{¿Qué puede simular PHITS y MCNP6?}
+\begin{frame}{¿Qué pueden simular PHITS y MCNP6?}
     \begin{center}
         \includegraphics[height=6cm]{energy_range_mcnp.png}
     \end{center}
 
     Tanto PHITS como MCNP simulan fotones y electrones hasta 1keV (simulación actual). 
-    Con MCNP6 se puede bajar hasta 1eV (fotones) y 10eV (fotones).
+    Con MCNP6 se puede bajar hasta 1eV (fotones) y 10eV (electrones).
 \end{frame}
 
 \begin{frame}{Experimento realizado}
@@ -137,7 +137,7 @@
             \vspace{5em}
             \begin{itemize}
                 \item Detector de silicio (9cm x 3cm x 675$\mu$m)
-                \item Dos bloques de cobre rodeando detector como blindaje (12" x 8" x 2")
+                \item Dos bloques de cobre rodeando al detector, como blindaje (12" x 8" x 2")
                 \item Dewar de acero inoxidable ($\phi$=10", e=0.7cm)
             \end{itemize}
         \end{column}
@@ -154,11 +154,11 @@
         \end{column}
         \begin{column}{0.5\textwidth}
             \hspace{1em}
-            \vspace{1em}
+            \vspace{2em}
             \begin{itemize}
                 \item Blindaje de plomo (3cm)
-                \item Fuente de fisiones espontáneas de $^{252}$Cf (1.2$\mu$Ci) debajo del plomo(no visible en la imagen)
-                \item Plomo como blindaje de los gammas producidos por la fuente
+                \item Fuente de fisiones espontáneas de $^{252}$Cf (1.2$\mu$Ci) debajo del plomo 
+                \item Plomo como blindaje para los gammas producidos por la fuente
             \end{itemize}
         \end{column}
     \end{columns}
@@ -226,7 +226,7 @@
     \begin{itemize}
         \item Por cada fisión espontánea se emiten: $\bar{\nu}_n = 3.7$ y $\bar{\nu}_p = 8.3$
         \item Espectro de fisión (Watt) para neutrones ($\bar E \approx 2MeV$)
-        \item Se asume una fuente sin quemado.
+        \item Se asume una fuente sin quemado
     \end{itemize}
     \begin{columns}[t]
         \begin{column}{0.5\textwidth}
@@ -239,7 +239,7 @@
             Algunas preguntas:
             \begin{itemize}
                 \item ¿Cuánto influyen estos fotones en el detector?
-                \item Por otro lado, los neutrones generan fotones al interactuar con el resto de los materiales.
+                \item Por otro lado, los neutrones generan fotones al interactuar con el resto de los materiales
                 \item ¿Qué contribución de fotones es más importante?
             \end{itemize}
         \end{column}
@@ -248,8 +248,8 @@
 
 \begin{frame}{Algunas respuestas}
    \begin{itemize}
-       \item Se hicieron dos simulaciones (con MCNP), con y sin los fotones de la fuente.
-       \item Se obtuvo la energía depositada en Si por fotones
+       \item Se hicieron dos simulaciones (con MCNP), con y sin los fotones de la fuente
+       \item Se muestra la energía depositada en Si por los fotones
    \end{itemize}
 
    \begin{center}
