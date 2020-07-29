@@ -20,7 +20,7 @@ if __name__ == '__main__':
     archivo = 'skccd.o'
     labels = [
               'In Pb',
-              'In Cu (botom)',
+              'In Cu (bottom)',
               'In Si',
               ]
     tallies = [
