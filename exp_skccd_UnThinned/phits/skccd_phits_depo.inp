@@ -12,10 +12,20 @@ Skipper CCD with lead and cooper shield using Cf252 source
      negs = 1               # (D=-1) Elec. Transp. -1: only photons 
                             # 1: Transport p, e-, e+ con EGS5 database
    e-mode = 2               # (D=0) 0:Normal mode, 2: Event gen. mode version 2 (recommended)
+  emin(1) = 1e-9
+  emin(2) = 1e-9
+ emin(11) = 1e-9
+ emin(12) = 1e-9
+ emin(13) = 1e-9
+ emin(14) = 1e-9
+ emin(15) = 1e-9
+ emin(16) = 1e-9
+ emin(17) = 1e-9
+ emin(18) = 1e-9
 
 infl: {experimento_phits}
 
-[ C o u n t e r ]
+[ C o u n t e r ] off
     counter = 1
     part = neutron
     reg  in  out  iels  ref
@@ -41,5 +51,21 @@ $   y-txt  = Response [cm^2]
    epsout =    1            # (D=0) generate eps file by ANGEL
 $   dresol =  0.2            # (D=0) width = sqrt(dresol**2 + dfano*E)
 $    dfano =  0.05           # (D=0) width = sqrt(dresol**2 + dfano*E)
+
+[ T - T r a c k ]
+     mesh =  reg            # mesh type is xyz scoring mesh
+      reg =  101 102 103
+     part =  neutron photon
+   e-type =    3            # e-mesh is given by the below data
+       ne =    200          # number of e-mesh points
+     emin =  1e-5
+     emax =  10.0
+     unit =    2            # unit is [1/cm^2/MeV/source]
+     axis =   eng            # axis of output
+     file = track_eng.out  # file name of output for the above axis
+    title = Particle flux by regions
+    gshow =    3            # 0: no 1:bnd, 2:bnd+mat, 3:bnd+reg 4:bnd+lat
+   epsout =    1            # (D=0) generate eps file by ANGEL
+
 
 [ E n d ]
