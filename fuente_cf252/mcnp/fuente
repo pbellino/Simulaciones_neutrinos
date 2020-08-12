@@ -1,0 +1,87 @@
+Fuente de Cf252 (X224, AEATECHNOLOGY) con doble encapsulado y contenedor de ac. inox.
+c
+c
+100 1  -12.02       -1000            imp:n,p=1  $ Cermet Cf2O3-Pd (dens el Pd)
+101 2   -7.99  1000 -1001            imp:n,p=1  $ Capsula ac. inox.
+102 2   -7.99       -1002            imp:n,p=1  $ Rosca ac. inox.
+103 2   -7.99  1002 -1005            imp:n,p=1  $ Tapa contenedor ac. inox.
+104 2   -7.99  1004 -1003            imp:n,p=1  $ Pared contenedor
+105 0          1001 -1004            imp:n,p=1  $ Vacio dentro contenedor
+106 2   -7.99       -1006            imp:n,p=1  $ Vastago contenedor ac. inox.
+107 0          1003  1005 1006 -9999 imp:n,p=1 $ Vacio lab.
+999 0                9999            imp:n,p=0  $ Nada
+
+1000 RCC  0 0 -0.9652 0 0 1.9304 0.2032     $ Cilindro material activo
+1001 RCC  0 0 -1.905  0 0 3.2512 0.4699     $ Encapsulado ac. inox.
+1002 RCC  0 0  1.3462 0 0 0.508  0.24       $ Rosca fuente
+1003 RCC  0 0 -2.4638 0 0 3.81   1.27       $ Pared externa contenedor
+1004 RCC  0 0 -2.3622 0 0 3.7084 1.1684     $ Pared interna contenedor
+1005 RCC  0 0  1.3462 0 0 1.5875 1.27       $ Tapa contenedor
+1006 RCC  0 0  2.9337 0 0 2.54   0.79248    $ Rosca contenedor (vastago)
+9999 SO  20                                 $ Esfera lab 
+
+c ---- [99.9% Pd - 0.1% Cf2O3] con Cf252 (0.79) Cf251 (0.04) Cf250 (0.15) Cf249 (0.02) (% en peso)
+M1   98252.80c 7.2122E-04  $Cf
+     98251.80c 3.6518E-05
+     98250.80c 1.3694E-04
+     98249.80c 1.8259E-05
+     46102.80c 9.7580E-03  $Pd
+     46104.80c 1.0866E-01
+     46105.80c 2.1991E-01
+     46106.80c 2.7171E-01
+     46108.80c 2.6803E-01
+     46110.80c 1.2092E-01
+      8016.80c 8.7057E-05  $O
+c
+c ----- Acero inoxidable AISI 304L (dens=7.99 g/cm3) ---------------------
+M2    6000.80c 1.215E-04 $C
+     25055.80c 1.751E-03 $Mn55
+     14028.80c 1.580E-03 $Si28
+     14029.80c 8.022E-05 $Si29
+     14030.80c 5.288E-05 $Si30
+     24050.80c 7.639E-04 $Cr50
+     24052.80c 1.473E-02 $Cr52
+     24053.80c 1.670E-03 $Cr53
+     24054.80c 4.158E-04 $Cr54
+     28058.80c 5.023E-03 $Ni58
+     28060.80c 1.935E-03 $Ni60
+     28061.80c 8.411E-05 $Ni61
+     28062.80c 2.681E-04 $Ni62
+     28064.80c 6.832E-05 $Ni64
+     26054.80c 3.473E-03 $Fe54
+     26056.80c 5.452E-02 $Fe56
+     26057.80c 1.259E-03 $Fe57
+     26058.80c 1.676E-04 $Fe58
+c
+c ***************************************************
+c FUENTE
+c ***************************************************
+c
+SDEF  PAR=-SF POS=0 0 0 AXS=0 0 1 RAD=d1 EXT=d2 
+SI1 0 0.2032
+SP1 -21 1
+SI2 -0.9652 0.9652
+SP2 -21 0
+c ***************************************************
+c TALLIES
+c ***************************************************
+FC11 Neutrones 
+F11:n 9999
+E11 1e-5 198ILOG 100
+c
+FC81 Fotones 
+F81:p 9999
+E81 1e-5 198ILOG 50
+c
+c ***************************************************
+c PARAMETROS
+c ***************************************************
+FMULT METHOD=5
+MODE n p
+CUT:n J J 0 0           $ Fuerza captura analógica
+CUT:p J J 0 0           $ Fuerza captura analógica
+RAND GEN=2 SEED=1
+NPS 1e5
+PRINT
+
+
