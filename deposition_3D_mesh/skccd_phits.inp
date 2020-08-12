@@ -11,6 +11,8 @@ Skipper CCD with lead and cooper shield using Cf252 source
      negs = 1               # (D=-1) Elec. Transp. -1: only photons 
                             # 1: Transport p, e-, e+ con EGS5 database
    e-mode = 2               # (D=0) 0:Normal mode, 2: Event gen. mode version 2 (recommended)
+emin(12) = 1e-6
+emin(13) = 1e-6
 
 infl: {experimento_phits}
 
@@ -40,15 +42,17 @@ $    dfano =  0.05           # (D=0) width = sqrt(dresol**2 + dfano*E)
     title = Energy deposition in mesh
      mesh =  xyz            # mesh type is region-wise
    x-type =    2            # x-mesh is linear given by xmin, xmax and nx
-       nx =  4126           # number of x-mesh points
+       nx =  41           # number of x-mesh points
+       $nx =  4126           # number of x-mesh points
      xmin =  -3.0945        # minimum value of x-mesh points
      xmax =   3.0945        # maximum value of x-mesh points
    y-type =    2            # y-mesh is given by the below data
-       ny =  886            # number of y-mesh points
+       ny =  8            # number of y-mesh points
+       $ny =  886            # number of y-mesh points
      ymin = -0.6645
      ymax =  0.6645
    z-type =    2            # z-mesh is linear given by zmin, zmax and nz
-       nz =   50            # number of z-mesh points
+       nz =   10            # number of z-mesh points
      zmin =  -0.01
      zmax =   0.01
    deposit=  0
@@ -60,6 +64,8 @@ $    dfano =  0.05           # (D=0) width = sqrt(dresol**2 + dfano*E)
      axis =   xz           # axis of output
      file = deposit_mesh.out  # file name of output for the above axis
      part =   all
+   vtkout = 1
+   vtkfmt = 1
    epsout =    0            # (D=0) generate eps file by ANGEL
 $   dresol =  0.2            # (D=0) width = sqrt(dresol**2 + dfano*E) 0.2
 $    dfano =  0.09           # (D=0) width = sqrt(dresol**2 + dfano*E) 0.05
