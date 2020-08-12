@@ -38,7 +38,7 @@
   -  2% 249Cf
   - 15% 250Cf
   -  4% 251Cf
-  - 79$ 252Cf
+  - 79% 252Cf
 
 - Siendo que el californio sólo se produce en dos reactores en el mundo (ORNL y Rusia) es muy probable que esta composición isotópica sea la misma. Respecto al porcentaje entre óxido y paladio, el modelo de la cápsula utilizada se llama "Savannah River" por lo que se tiene altas chances que sea la composición de la fuente X224
 
