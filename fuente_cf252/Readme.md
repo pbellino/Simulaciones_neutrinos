@@ -23,7 +23,7 @@
 
 - En el catálogo de la empresa no se especifical a composición del material activo. Sólo se dice, de forma general, que:
 
-> Californium-252 is in the form of a cermet † of californium oxide and palladium metal,
+> Californium-252 is in the form of a cermet of californium oxide and palladium metal,
 > or as a refractory composite material. Low activity sources (<1$\mu$g) may contain a Cf-252
 > compound deposited or ion-exchanged onto a substrate within the capsule.
 
