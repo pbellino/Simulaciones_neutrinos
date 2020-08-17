@@ -76,6 +76,7 @@ c
 c ***************************************************
 c PARAMETROS
 c ***************************************************
+PRDMP 2J 1              $ Escribe MCTAL
 FMULT METHOD=5
 MODE n p
 CUT:n J J 0 0           $ Fuerza captura analógica
