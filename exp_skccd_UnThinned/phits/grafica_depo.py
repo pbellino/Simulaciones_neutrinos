@@ -22,7 +22,7 @@ if __name__ == '__main__':
 
     fig, ax = plt.subplots(1, 1)
     particles = ['28Si', '25Mg', 'positron', 'electron', 'alpha', 'all']
-    particles = ['28Si', 'electron', 'all']
+    particles = ['28Si', 'electron', 'positron', 'all']
 #    particles = ['all']
 
     for zona in zonas:
@@ -43,7 +43,7 @@ if __name__ == '__main__':
             ax.set_xlabel('Energy [MeV]')
             ax.set_ylabel('Number [1/source]')
             ax.legend()
-            ax.set_ylim(1e-8, 2e-4)
+#            ax.set_ylim(1e-8, 2e-4)
         fig.gca().set_title('Deposited energy')
 
     fig.savefig('deposited_Si.png')
