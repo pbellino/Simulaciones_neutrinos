@@ -1,0 +1,622 @@
+           _________________________________________________________
+          |                                                         |
+          |       _/_/_/_/                                          |
+          |      _/      _/                  _/_/_/_/_/_/           |
+          |     _/      _/  _/      _/   _/      _/      _/_/_/_/_/ |
+          |    _/_/_/_/    _/      _/   _/      _/      _/          |
+          |   _/          _/_/_/_/_/   _/      _/       _/_/_/_/    |
+          |  _/          _/      _/   _/      _/              _/    |
+          | _/          _/      _/   _/      _/      _/_/_/_/_/     |
+          |                                                         |
+          |                                                         |
+          |       Particle and Heavy Ion Transport code System      |
+          |                      Version =  3.170                   |
+          |                       developed by                      |
+          |                                                         |
+          |                     Koji NIITA (RIST),                  |
+          |                                                         |
+          |  Tatsuhiko SATO, Yosuke IWAMOTO, Shintaro HASHIMOTO,    |
+          |    Tatsuhiko OGAWA, Takuya FURUTA, Shinichiro ABE,      |
+          |      Takeshi KAI, Pi-En TSAI, Norihiro MATSUDA,         |
+          |         Yusuke MATSUYA, Hunter RATLIFF (JAEA),          |
+          |                                                         |
+          |                    Hiroshi IWASE (KEK),                 |
+          |                                                         |
+          |           Nobuhiro SHIGYO (Kyushu University), and      |
+          |                                                         |
+          |        Lembit SIHVER (Technische Universitat Wien)      |
+          |                                                         |
+          |                 Last Revised  2019-10-29                |
+          |_________________________________________________________|
+
+                    ___________ [ Job Title ] _________ 
+                   |                                   |
+                   |  Sample input for muon transport  |
+                   |___________________________________|
+
+                        Starting Date = 2020-11-09
+                        Starting Time = 18h 05m 40
+
+>>> Input Echo >>>=============================================================
+
+[ T i t l e ]
+Sample input for muon transport
+
+[ P a r a m e t e r s ]
+ icntl    =           0     # (D=0) 3:ECH 5:NOR 6:SRC 7,8:GSH 11:DSH 12:DUMP
+ maxcas   =          10     # (D=10) number of particles per one batch
+ maxbch   =          50     # (D=10) number of batches
+ emin(6)  = 1.000000000E-03 # (D=1.0d-3) cut-off energy of muon+ (MeV)
+ emin(7)  = 1.000000000E-03 # (D=1.0d-3) cut-off energy of muon- (MeV)
+ negs     =           1     # (D=-1) =-1:original, =0:No, =1:EGS
+ ipnint   =           0     # (D=0) 0: no, 1: consider photo-nuclear reaction
+ emin(2)  = 1.000000000E-11 # (D=1.0d-3) cut-off energy of neutron (MeV)
+ dmax(2)  =  20.0000000     # (D=emin(2)) data max. energy of neutron (MeV)
+ emin(12) = 0.100000000     # (D=1.d9) cut-off energy of electron (MeV)
+ emin(13) = 0.100000000     # (D=1.d9) cut-off energy of positron (MeV)
+ emin(14) = 1.000000000E-03 # (D=1.d9) cut-off energy of photon (MeV)
+ dmax(12) =  1000.00000     # (D=emin(12)) data max. energy of electron (MeV)
+ dmax(13) =  1000.00000     # (D=emin(13)) data max. energy of positron (MeV)
+ dmax(14) =  1000.00000     # (D=emin(14)) data max. energy of photon (MeV)
+
+[ S o u r c e ]
+  totfact =   1.0000        # (D=1.0) global factor
+   s-type =   1             # cylindrical source
+     proj =  muon-          # kind of incident particle         
+       e0 =   2000.0        # energy of beam [MeV/u]
+       r0 =   5.0000        # radius [cm]
+       r1 =   0.0000        # minimum radius [cm]
+       x0 =   0.0000        # (D=0.0) center position of x-axis [cm]
+       y0 =   0.0000        # (D=0.0) center position of y-axis [cm]
+       z0 = -1.00000E-04    # minimum position of z-axis [cm]
+       z1 = -1.00000E-04    # maximum position of z-axis [cm]
+      dir =   1.0000        # z-direction of beam [cosine]
+
+[ M a t e r i a l ]
+MAT[ 1 ] 
+        208Pb         1.0000000E+00
+
+[ C e l l ]
+ 1          0                 1 -2 -4 
+ 10         1 -1.5600000E+01  2 -3 -4 
+ 99        -1                 -1 : 3 : 4 
+
+[ S u r f a c e ]
+ 1             pz   -1.0000000E+00
+ 2             pz    0.0000000E+00
+ 3             pz    5.0000000E+01
+ 4             cz    2.0000000E+01
+
+[ T - T r a c k ]
+    title = [t-track] in xyz mesh
+     mesh =  xyz            # mesh type is xyz scoring mesh
+   x-type =    2            # x-mesh is linear given by xmin, xmax and nx
+     xmin =  -20.00000      # minimum value of x-mesh points
+     xmax =   20.00000      # maximum value of x-mesh points
+#    xdel =  0.4000000      # mesh width of x-mesh points
+       nx =    100          # number of x-mesh points
+#    data = ( x(i), i = 1, nx + 1 )
+#          -2.00000E+01 -1.96000E+01 -1.92000E+01 -1.88000E+01 -1.84000E+01
+#          -1.80000E+01 -1.76000E+01 -1.72000E+01 -1.68000E+01 -1.64000E+01
+#          -1.60000E+01 -1.56000E+01 -1.52000E+01 -1.48000E+01 -1.44000E+01
+#          -1.40000E+01 -1.36000E+01 -1.32000E+01 -1.28000E+01 -1.24000E+01
+#          -1.20000E+01 -1.16000E+01 -1.12000E+01 -1.08000E+01 -1.04000E+01
+#          -1.00000E+01 -9.60000E+00 -9.20000E+00 -8.80000E+00 -8.40000E+00
+#          -8.00000E+00 -7.60000E+00 -7.20000E+00 -6.80000E+00 -6.40000E+00
+#          -6.00000E+00 -5.60000E+00 -5.20000E+00 -4.80000E+00 -4.40000E+00
+#          -4.00000E+00 -3.60000E+00 -3.20000E+00 -2.80000E+00 -2.40000E+00
+#          -2.00000E+00 -1.60000E+00 -1.20000E+00 -8.00000E-01 -4.00000E-01
+#           0.00000E+00  4.00000E-01  8.00000E-01  1.20000E+00  1.60000E+00
+#           2.00000E+00  2.40000E+00  2.80000E+00  3.20000E+00  3.60000E+00
+#           4.00000E+00  4.40000E+00  4.80000E+00  5.20000E+00  5.60000E+00
+#           6.00000E+00  6.40000E+00  6.80000E+00  7.20000E+00  7.60000E+00
+#           8.00000E+00  8.40000E+00  8.80000E+00  9.20000E+00  9.60000E+00
+#           1.00000E+01  1.04000E+01  1.08000E+01  1.12000E+01  1.16000E+01
+#           1.20000E+01  1.24000E+01  1.28000E+01  1.32000E+01  1.36000E+01
+#           1.40000E+01  1.44000E+01  1.48000E+01  1.52000E+01  1.56000E+01
+#           1.60000E+01  1.64000E+01  1.68000E+01  1.72000E+01  1.76000E+01
+#           1.80000E+01  1.84000E+01  1.88000E+01  1.92000E+01  1.96000E+01
+#           2.00000E+01
+   y-type =    1            # y-mesh is given by the below data
+       ny =      1          # number of y-mesh points
+#    data = ( y(i), i = 1, ny + 1 )
+           -2.00000E+01  2.00000E+01
+   z-type =    2            # z-mesh is linear given by zmin, zmax and nz
+     zmin =   0.000000      # minimum value of z-mesh points
+     zmax =   50.00000      # maximum value of z-mesh points
+#    zdel =  0.5000000      # mesh width of z-mesh points
+       nz =    100          # number of z-mesh points
+#    data = ( z(i), i = 1, nz + 1 )
+#           0.00000E+00  5.00000E-01  1.00000E+00  1.50000E+00  2.00000E+00
+#           2.50000E+00  3.00000E+00  3.50000E+00  4.00000E+00  4.50000E+00
+#           5.00000E+00  5.50000E+00  6.00000E+00  6.50000E+00  7.00000E+00
+#           7.50000E+00  8.00000E+00  8.50000E+00  9.00000E+00  9.50000E+00
+#           1.00000E+01  1.05000E+01  1.10000E+01  1.15000E+01  1.20000E+01
+#           1.25000E+01  1.30000E+01  1.35000E+01  1.40000E+01  1.45000E+01
+#           1.50000E+01  1.55000E+01  1.60000E+01  1.65000E+01  1.70000E+01
+#           1.75000E+01  1.80000E+01  1.85000E+01  1.90000E+01  1.95000E+01
+#           2.00000E+01  2.05000E+01  2.10000E+01  2.15000E+01  2.20000E+01
+#           2.25000E+01  2.30000E+01  2.35000E+01  2.40000E+01  2.45000E+01
+#           2.50000E+01  2.55000E+01  2.60000E+01  2.65000E+01  2.70000E+01
+#           2.75000E+01  2.80000E+01  2.85000E+01  2.90000E+01  2.95000E+01
+#           3.00000E+01  3.05000E+01  3.10000E+01  3.15000E+01  3.20000E+01
+#           3.25000E+01  3.30000E+01  3.35000E+01  3.40000E+01  3.45000E+01
+#           3.50000E+01  3.55000E+01  3.60000E+01  3.65000E+01  3.70000E+01
+#           3.75000E+01  3.80000E+01  3.85000E+01  3.90000E+01  3.95000E+01
+#           4.00000E+01  4.05000E+01  4.10000E+01  4.15000E+01  4.20000E+01
+#           4.25000E+01  4.30000E+01  4.35000E+01  4.40000E+01  4.45000E+01
+#           4.50000E+01  4.55000E+01  4.60000E+01  4.65000E+01  4.70000E+01
+#           4.75000E+01  4.80000E+01  4.85000E+01  4.90000E+01  4.95000E+01
+#           5.00000E+01
+   e-type =    2            # e-mesh is linear given by emin, emax and ne
+     emin =   0.000000      # minimum value of e-mesh points
+     emax =  1.0000000E+07  # maximum value of e-mesh points
+#    edel =  1.0000000E+07  # mesh width of e-mesh points
+       ne =      1          # number of e-mesh points
+#    data = ( e(i), i = 1, ne + 1 )
+#           0.00000E+00  1.00000E+07
+     unit =    1            # unit is [1/cm^2/source]
+ material =  all            # (D=all) number of specific material
+  2D-type =    3            # 1:Cont, 2:Clust, 3:Color, 4:xyz, 5:mat, 6:Clust+Cont, 7:Col+Cont
+     axis =   xz            # axis of output
+     file = track.out       # file name of output for the above axis
+     part =  muon-      neutron    photon   
+# kf/name :  13         2112       22       
+   epsout =    1            # (D=0) generate eps file by ANGEL
+#    used :        main (  %)        temp (  %)       total (  %)
+#  memory :         210 (  0)           0 (  0)         210 (  0)
+
+[END] of Input Echo <<<========================================================
+
+<<< Report of real Geometry memory >>>
+*           GG/CG memory =       98
+*     total memory: mdas = 80000000
+*                percent =     0.00 %
+
+<<< Report of material memory for high energy>>>
+*   high energy material =       77
+*     total memory: mdas = 80000000
+*                percent =     0.00 %
+
+<<< Report of material memory for low energy>>>
+*    low energy material =   472351
+*     total memory: mdas = 80000000
+*                percent =     0.59 %
+
+<<< Report of real tally memory >>>
+*      real tally memory =      210
+*     total memory: mdas = 80000000
+*                percent =     0.00 %
+
+<<< Report of temporary tally memory >>>
+* temporary tally memory =   469238
+*     total memory: mdas = 80000000
+*                percent =     0.59 %
+
+<<< Report of other memory >>>
+*           other memory =     1503
+*     total memory: mdas = 80000000
+*                percent =     0.00 %
+
+<<< Report of total memory >>>
+*      used total memory =   474239
+*     total memory: mdas = 80000000
+*                percent =     0.59 %
+*                ---------------------
+
+-------------------------------------------------------------------------------
+bat[       1] ncas =             10. : rijk    =   6647299061401.
+       low neutron =              0. : ncall/s =  5.916000000E+02
+          cpu time =  11.309 s.
+
+-------------------------------------------------------------------------------
+bat[       2] ncas =             20. : rijk    = 148844717761569.
+       low neutron =              0. : ncall/s =  2.426000000E+03
+          cpu time =   0.481 s.
+
+-------------------------------------------------------------------------------
+bat[       3] ncas =             30. : rijk    = 159131926320105.
+       low neutron =              0. : ncall/s =  9.746000000E+02
+          cpu time =   0.379 s.
+
+-------------------------------------------------------------------------------
+bat[       4] ncas =             40. : rijk    = 278364013185009.
+       low neutron =              0. : ncall/s =  1.440000000E+01
+          cpu time =   0.285 s.
+
+-------------------------------------------------------------------------------
+bat[       5] ncas =             50. : rijk    = 254775167357497.
+       low neutron =              0. : ncall/s =  2.573000000E+02
+          cpu time =   0.315 s.
+
+-------------------------------------------------------------------------------
+bat[       6] ncas =             60. : rijk    = 100401947972801.
+       low neutron =              0. : ncall/s =  5.001000000E+02
+          cpu time =   0.367 s.
+
+-------------------------------------------------------------------------------
+bat[       7] ncas =             70. : rijk    = 194872375689609.
+       low neutron =              0. : ncall/s =  3.739000000E+02
+          cpu time =   0.303 s.
+
+-------------------------------------------------------------------------------
+bat[       8] ncas =             80. : rijk    = 162780866091665.
+       low neutron =              0. : ncall/s =  1.840000000E+01
+          cpu time =   0.261 s.
+
+-------------------------------------------------------------------------------
+bat[       9] ncas =             90. : rijk    = 108355911332313.
+       low neutron =              0. : ncall/s =  1.854800000E+03
+          cpu time =   0.469 s.
+
+-------------------------------------------------------------------------------
+bat[      10] ncas =            100. : rijk    =  51329540794721.
+       low neutron =              0. : ncall/s =  1.570000000E+01
+          cpu time =   0.308 s.
+
+-------------------------------------------------------------------------------
+bat[      11] ncas =            110. : rijk    =  28487959622441.
+       low neutron =              0. : ncall/s =  1.664000000E+02
+          cpu time =   0.292 s.
+
+-------------------------------------------------------------------------------
+bat[      12] ncas =            120. : rijk    = 277543796314417.
+       low neutron =              0. : ncall/s =  1.570000000E+01
+          cpu time =   0.269 s.
+
+-------------------------------------------------------------------------------
+bat[      13] ncas =            130. : rijk    = 234880039753081.
+       low neutron =              0. : ncall/s =  1.530000000E+01
+          cpu time =   0.311 s.
+
+-------------------------------------------------------------------------------
+bat[      14] ncas =            140. : rijk    =  71024686408193.
+       low neutron =              0. : ncall/s =  5.812000000E+02
+          cpu time =   0.385 s.
+
+-------------------------------------------------------------------------------
+bat[      15] ncas =            150. : rijk    = 166221502163145.
+       low neutron =              0. : ncall/s =  1.670000000E+01
+          cpu time =   0.245 s.
+
+-------------------------------------------------------------------------------
+bat[      16] ncas =            160. : rijk    =  37814122556369.
+       low neutron =              0. : ncall/s =  8.302000000E+02
+          cpu time =   0.343 s.
+
+-------------------------------------------------------------------------------
+bat[      17] ncas =            170. : rijk    =  10589707713817.
+       low neutron =              0. : ncall/s =  6.235000000E+02
+          cpu time =   0.337 s.
+
+-------------------------------------------------------------------------------
+bat[      18] ncas =            180. : rijk    = 273737473162913.
+       low neutron =              0. : ncall/s =  1.370000000E+01
+          cpu time =   0.271 s.
+
+-------------------------------------------------------------------------------
+bat[      19] ncas =            190. : rijk    = 239629993157225.
+       low neutron =              0. : ncall/s =  1.026300000E+03
+          cpu time =   0.329 s.
+
+-------------------------------------------------------------------------------
+bat[      20] ncas =            200. : rijk    =  38793516542577.
+       low neutron =              0. : ncall/s =  1.810000000E+01
+          cpu time =   0.294 s.
+
+-------------------------------------------------------------------------------
+bat[      21] ncas =            210. : rijk    =  96574767179961.
+       low neutron =              0. : ncall/s =  6.241000000E+02
+          cpu time =   0.316 s.
+
+-------------------------------------------------------------------------------
+bat[      22] ncas =            220. : rijk    = 189729324285761.
+       low neutron =              0. : ncall/s =  1.617300000E+03
+          cpu time =   0.361 s.
+
+-------------------------------------------------------------------------------
+bat[      23] ncas =            230. : rijk    =  69161197740041.
+       low neutron =              0. : ncall/s =  3.038000000E+02
+          cpu time =   0.329 s.
+
+-------------------------------------------------------------------------------
+bat[      24] ncas =            240. : rijk    =  93656408444177.
+       low neutron =              0. : ncall/s =  1.770000000E+01
+          cpu time =   0.270 s.
+
+-------------------------------------------------------------------------------
+bat[      25] ncas =            250. : rijk    = 161797364963417.
+       low neutron =              3. : ncall/s =  4.164900000E+03
+          cpu time =   1.810 s.
+
+-------------------------------------------------------------------------------
+bat[      26] ncas =            260. : rijk    = 105769502827489.
+       low neutron =              0. : ncall/s =  2.744000000E+02
+          cpu time =   0.366 s.
+
+-------------------------------------------------------------------------------
+bat[      27] ncas =            270. : rijk    = 275952319635881.
+       low neutron =              9. : ncall/s =  1.331330000E+04
+          cpu time =   1.874 s.
+
+-------------------------------------------------------------------------------
+bat[      28] ncas =            280. : rijk    = 201329766749105.
+       low neutron =              0. : ncall/s =  5.649000000E+02
+          cpu time =   0.404 s.
+
+-------------------------------------------------------------------------------
+bat[      29] ncas =            290. : rijk    = 127097443961849.
+       low neutron =              0. : ncall/s =  2.010000000E+01
+          cpu time =   0.246 s.
+
+-------------------------------------------------------------------------------
+bat[      30] ncas =            300. : rijk    = 240153129380993.
+       low neutron =              0. : ncall/s =  8.605000000E+02
+          cpu time =   0.338 s.
+
+-------------------------------------------------------------------------------
+bat[      31] ncas =            310. : rijk    = 269937296287561.
+       low neutron =              0. : ncall/s =  3.082000000E+02
+          cpu time =   0.282 s.
+
+-------------------------------------------------------------------------------
+bat[      32] ncas =            320. : rijk    =  76756987838033.
+       low neutron =              0. : ncall/s =  9.560000000E+02
+          cpu time =   0.328 s.
+
+-------------------------------------------------------------------------------
+bat[      33] ncas =            330. : rijk    = 207948505056153.
+       low neutron =              0. : ncall/s =  1.500000000E+01
+          cpu time =   0.262 s.
+
+-------------------------------------------------------------------------------
+bat[      34] ncas =            340. : rijk    =  92448133077281.
+       low neutron =              0. : ncall/s =  1.840000000E+01
+          cpu time =   0.314 s.
+
+-------------------------------------------------------------------------------
+bat[      35] ncas =            350. : rijk    = 107600442339561.
+       low neutron =              0. : ncall/s =  1.750000000E+01
+          cpu time =   0.276 s.
+
+-------------------------------------------------------------------------------
+bat[      36] ncas =            360. : rijk    = 142954978495729.
+       low neutron =              0. : ncall/s =  1.500000000E+01
+          cpu time =   0.263 s.
+
+-------------------------------------------------------------------------------
+bat[      37] ncas =            370. : rijk    = 127770358546233.
+       low neutron =              0. : ncall/s =  5.205000000E+02
+          cpu time =   0.307 s.
+
+-------------------------------------------------------------------------------
+bat[      38] ncas =            380. : rijk    = 203724951726529.
+       low neutron =              0. : ncall/s =  1.450000000E+01
+          cpu time =   0.267 s.
+
+-------------------------------------------------------------------------------
+bat[      39] ncas =            390. : rijk    = 161788926934665.
+       low neutron =              0. : ncall/s =  4.845000000E+02
+          cpu time =   0.293 s.
+
+-------------------------------------------------------------------------------
+bat[      40] ncas =            400. : rijk    = 253018887470993.
+       low neutron =              0. : ncall/s =  1.550000000E+01
+          cpu time =   0.271 s.
+
+-------------------------------------------------------------------------------
+bat[      41] ncas =            410. : rijk    =  47340082118361.
+       low neutron =              0. : ncall/s =  5.127000000E+02
+          cpu time =   0.309 s.
+
+-------------------------------------------------------------------------------
+bat[      42] ncas =            420. : rijk    = 190241751457377.
+       low neutron =              0. : ncall/s =  1.069800000E+03
+          cpu time =   0.363 s.
+
+-------------------------------------------------------------------------------
+bat[      43] ncas =            430. : rijk    = 155716546121769.
+       low neutron =              0. : ncall/s =  1.049500000E+03
+          cpu time =   0.357 s.
+
+-------------------------------------------------------------------------------
+bat[      44] ncas =            440. : rijk    =  28745011058225.
+       low neutron =              0. : ncall/s =  1.740000000E+01
+          cpu time =   0.260 s.
+
+-------------------------------------------------------------------------------
+bat[      45] ncas =            450. : rijk    = 224199402996345.
+       low neutron =              0. : ncall/s =  9.510400000E+03
+          cpu time =   7.020 s.
+
+-------------------------------------------------------------------------------
+bat[      46] ncas =            460. : rijk    = 108796981147393.
+       low neutron =              0. : ncall/s =  1.620000000E+01
+          cpu time =   0.304 s.
+
+-------------------------------------------------------------------------------
+bat[      47] ncas =            470. : rijk    = 143533646898633.
+       low neutron =              0. : ncall/s =  6.337000000E+02
+          cpu time =   0.316 s.
+
+-------------------------------------------------------------------------------
+bat[      48] ncas =            480. : rijk    = 112081351708881.
+       low neutron =              0. : ncall/s =  5.041000000E+02
+          cpu time =   0.322 s.
+
+-------------------------------------------------------------------------------
+bat[      49] ncas =            490. : rijk    =  67434837772825.
+       low neutron =              0. : ncall/s =  2.000000000E+01
+          cpu time =   0.258 s.
+
+-------------------------------------------------------------------------------
+bat[      50] ncas =            500. : rijk    = 250374078362529.
+       low neutron =              0. : ncall/s =  2.040000000E+01
+          cpu time =   0.271 s.
+
+===============================================================================
+
+ Summary for the end of job
+
+-------------------------------------------------------------------------------
+ number of analyz call vs ncol
+-------------------------------------------------------------------------------
+     ncol          number
+        1              1.   : start of calculation            
+        2              1.   : end of calculation              
+        3             50.   : end of a batch                  
+        4            500.   : source                          
+        5              0.   : detection of geometry error/warn
+        6              0.   : recovery from geometry warning  
+        7              0.   : termination by geometry error   
+        8              0.   : termination by weight cut-off   
+        9              0.   : termination by time cut-off     
+       10            506.   : geometry boundary crossing      
+       11            700.   : termination by energy cut-off   
+       12            543.   : termination by escape or leakage
+       13           1664.   : reaction : (n,x) type           
+       14          49358.   : reaction : (n,n'x) type         
+       15             21.   : sequential transport for tally  
+
+-------------------------------------------------------------------------------
+ List of transport particles
+-------------------------------------------------------------------------------
+     Name      kf-code        mass       charge   baryon
+     proton       2212        938.3         1       1
+     neutron      2112        939.6         0       1
+     pion-        -211        139.6        -1       0
+     muon-          13        105.7        -1       0
+     electron       11          0.5        -1       0
+     positron      -11          0.5         1       0
+     photon         22          0.0         0       0
+     deuteron  1000002       1875.6         1       2
+
+     nu_mu          14          0.0         0       0
+
+-------------------------------------------------------------------------------
+ prod. particles       number        weight        weight per source
+-------------------------------------------------------------------------------
+     photon              139.     1.4208879E+02     2.8417759E-01
+     positron             81.     8.1834690E+01     1.6366938E-01
+     neutron              47.     4.6999632E+01     9.3999264E-02
+     muon-                36.     3.6000000E+01     7.2000000E-02
+     electron             34.     3.4000000E+01     6.8000000E-02
+     proton                4.     4.0000000E+00     8.0000000E-03
+     other                 1.     1.0000000E+00     2.0000000E-03
+     pion-                 1.     1.0000000E+00     2.0000000E-03
+     deuteron              1.     1.0000000E+00     2.0000000E-03
+
+-------------------------------------------------------------------------------
+ the other kind of produced particles
+-------------------------------------------------------------------------------
+     Name      kf-code        number     mass       charge   baryon
+     nu_mu          14             1       0.0         0       0
+
+-------------------------------------------------------------------------------
+ particle decays       number        weight        weight per source
+-------------------------------------------------------------------------------
+     positron             47.     4.7834690E+01     9.5669380E-02
+
+-------------------------------------------------------------------------------
+ stop. particles.    number        weight        weight per source
+-------------------------------------------------------------------------------
+     electron           3973.     4.0105812E+03     8.0211623E+00
+     photon              158.     1.5973260E+02     3.1946520E-01
+     positron             54.     5.4834690E+01     1.0966938E-01
+     nucleus              10.     1.0000000E+01     2.0000000E-02
+     proton                4.     4.0000000E+00     8.0000000E-03
+     deuteron              1.     1.0000000E+00     2.0000000E-03
+
+-------------------------------------------------------------------------------
+ leak. particles       number        weight        weight per source
+-------------------------------------------------------------------------------
+     muon-               499.     4.9900000E+02     9.9800000E-01
+     neutron              41.     4.0940451E+01     8.1880901E-02
+     photon                2.     2.0000000E+00     4.0000000E-03
+     other                 1.     1.0000000E+00     2.0000000E-03
+
+-------------------------------------------------------------------------------
+ the other kind of leakage particles
+-------------------------------------------------------------------------------
+     Name      kf-code        number     mass       charge   baryon
+     nu_mu          14             1       0.0         0       0
+
+-------------------------------------------------------------------------------
+ source: maxcas    maxbch      irskip   average weight          total source
+-------------------------------------------------------------------------------
+          10          50           0    1.0000000E+00    5.0000000000000E+02
+
+-------------------------------------------------------------------------------
+ used ATIMA database
+-------------------------------------------------------------------------------
+     for dedx  =        8 / mdbatima =      500
+
+-------------------------------------------------------------------------------
+ CG error summary
+-------------------------------------------------------------------------------
+ Number of lost particles     =     0 / nlost =       10
+ Number of geometry recovering =     0
+ Number of unrecovered errors =     0
+
+-------------------------------------------------------------------------------
+      initial random seed =   6647299061401.0
+ next initial random seed = 189127897317225.0
+
+-------------------------------------------------------------------------------
+ job termination date : 2020/11/09
+                 time :   18:05:51
+
+-------------------------------------------------------------------------------
+    CPU time and number of event called in PHITS
+-------------------------------------------------------------------------------
+
+                             sec
+total cpu time =           40.19
+
+
+                           count
+      analysis =          53342.  : data processing
+         nevap =             10.  : evaporation
+        dexgam =              6.  : de-excitation
+         nreac =          51022.  : atomic and nuclear reactions
+         dklos =             47.  : particle decay
+         hydro =              0.  : nucleon-nucleon scattering
+        n-data =            701.  : neutron data library
+        h-data =              0.  : proton data library
+        p-data =              0.  : photon data library
+        e-data =              0.  : electron data library
+        p-egs5 =           1909.  : photon interaction with EGS5
+        e-egs5 =          48321.  : electron interaction with EGS5
+      e-tsmode =              0.  : electron track structure mode
+     photonucl =              0.  : photo-nuclear reaction
+       mu-reac =              2.  : muon-induced nuclear reaction
+       mu-brem =              0.  : muon-induced bremsstrahlung
+       mu-pprd =             34.  : muon-induced pair production
+        mu-cap =              1.  : muon capture in nucleus
+         elast =              4.  : elastic scattering
+         ncasc =              9.  : nuclear reaction model
+
+       bertini =              1.  : Bertini model
+        isobar =              0.  : isobar model
+           JAM =              0.  : JAM model
+           QMD =              0.  : JQMD model
+        JAMQMD =              0.  : JAMQMD model
+          INCL =              8.  : INCL model
+        INCELF =              0.  : INCELF model
+
+>>> Citation Request >>>=======================================================
+
+ This execution uses model(s) that must be explicitly cited in addition to
+ the PHITS original document: T.Sato et al., J.Nucl.Sci.Technol.55, 684-690 (2018).
+ Please refer the following document(s) in your publication using this result
+
+ The INCL model:
+    A. Boudard et al., Phys. Rev C87, 014606 (2013).
+
+ The EGS5 code:
+    H. Hirayama et al., SLAC-R-730 (2005) and KEK Report 2005-8 (2005)
+
+ The KUROTAMA model:
+    K. Iida, A. Kohama, and K. Oyamatsu, J. Phys. Soc. Japan 76, 044201 (2007).
+
+ END 

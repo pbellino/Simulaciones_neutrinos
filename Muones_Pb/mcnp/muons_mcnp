@@ -1,0 +1,26 @@
+Creación de neutrones por espaliacón de muons en plomo
+1 0         100 -200 -400 
+2 2 -15.6   200 -300 -400 
+4 0        -100: 300: 400 
+
+100 pz -1.0
+200 pz  0.0
+300 pz 50.0
+400 cz 20.0
+
+M2   82208.80c 1 $ nlib=.80c hlib=.24h
+IMP:n,|,p,# 1 1 0
+MODE n | p # 
+SDEF  PAR=| ERG=2000 POS=0 0 0 DIR=1 VEC=0 0 1 RAD=d1  EXT=0 SUR=200
+SI1  0  5
+SP1  -21  1
+PHYS:n 2000 2J
+PHYS:p 2000 2J -1     $ Reac. fotonucleares analog
+PHYS:| 2000 2J 
+PHYS:# 2000 2J 
+F4:n  2
+E4    0 999i 3e3
+NPS 1e4
+PRINT
+LCA 8J 1 1
+
