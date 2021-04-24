@@ -1,0 +1,55 @@
+Experimento Thinned Skipper-CCD. Detector en dewar, fuente Cf252 en plomo y mesa óptica.
+c
+c
+READ FILE=experimento_mcnp
+c ***************************************************
+c TALLIES
+c ***************************************************
+c ---- Flujos ---------------------------------------
+c
+E0 1e-5 198ILOG 100
+c
+FC11 Neutrones que salen de la fuente
+F11:n 1200
+c
+FC21 Neutrones luego del poly/plomo
+F21:n 1003
+c
+FC31 Neutrones luego del dewart
+F31:n 1001 
+c ------ Fotones
+FC51 Fotones que salen de la fuente
+F51:p 1200
+c
+FC61 Fotones luego del poly/plomo
+F61:p 1003 
+c
+FC71 Fotones luego del dewart
+F71:p 1001 
+c c ---- Energía depositada ---------------------------
+c c
+c FC18 Energía depositada por neutrones en Si
+c F18:n 103
+c E18 0 1e-5 198I 0.5
+c c
+c FC518 Energía depositada por fotones en Si
+c F518:p 103
+c E518 0 1e-5 198I 0.5
+c c
+c FC918 Energía depositada fotones+neutrones en Si
+c F918:n,p 103
+c E918 0 1e-5 198I 0.5
+c
+c ***************************************************
+c PARAMETROS
+c ***************************************************
+FMULT METHOD=6          $ Generador (5:LLNL - neutrones y fotones)
+MODE n p 
+CUT:n J 0 0 0           $ Fuerza captura analógica
+CUT:p J J 0 0           $ Fuerza captura analógica
+c PHYS:n 6J 4             $ (colif=4) Generación de núcleos en scattering
+c LCA 9J 1                $ (ilaq=1) use LAQGSM08.03 for all interactions
+RAND GEN=2 SEED=1
+NPS 1e6 
+PRINT
+
