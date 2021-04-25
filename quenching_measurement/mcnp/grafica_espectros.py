@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 
 """
-Script para leer los resultados de cada corrida
-TODO
+Script para leer y graficar espectros de corriente sobre superficies
 """
 
 import numpy as np

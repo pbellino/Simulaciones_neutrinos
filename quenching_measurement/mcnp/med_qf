@@ -37,6 +37,14 @@ c
 FC531 Fotones luego del dewart
 F531:p 1001 
 c
+c ---- Flujo de partículas ----
+c
+FC14 Flujo de neutrones en el detector
+F14:n 100
+c
+FC504 Flujo de fotones en el detector
+F504:p 100
+c
 c c ---- Energía depositada ---------------------------
 c c
 c FC18 Energía depositada por neutrones en Si
@@ -61,6 +69,6 @@ CUT:p J J 0 0           $ Fuerza captura analógica
 c PHYS:n 6J 4             $ (colif=4) Generación de núcleos en scattering
 c LCA 9J 1                $ (ilaq=1) use LAQGSM08.03 for all interactions
 RAND GEN=2 SEED=1
-NPS 1e6 
+NPS 1e7 
 PRINT
 

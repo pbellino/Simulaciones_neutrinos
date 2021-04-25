@@ -19,7 +19,7 @@
 - Detector y fuente centrados a 12.41 cm en eje axial
 
 
-tallies, por ahora, miden corriente de partículas en las siguientes superficies:
+Las tallies que miden corriente de partículas se tomaron en las siguientes superficies:
 
 - Superficie de la fuente
 
@@ -31,23 +31,35 @@ tallies, por ahora, miden corriente de partículas en las siguientes superficies
 
 Aclaro que el tally de corriente mide partículas que atraviesan la superficie, sin importar dirección. Es decir, yo estaría midiendo también neutrones/fotones que atraviesan todo el sistema y siguen de largo. Más adelante mi idea es cuantificar esto ¿conviene trabajar con cilindros o medio cilindros? (para evitar partículas que le reboten por atrás al detector).
 
+Se agregó tally para medi flujo de partículas:
+
+- En celda del detector
+
 ## Resultados
 
-### Espectros de partículas a través de las tres superficies antes mencionadas
+### Espectros de partículas a través de las cuatro superficies antes mencionadas
 
 ![Corriente de neutrones con vacio](med_qf_vacio_neutrons.png)
+
 ![Corriente de fotones con vacio](med_qf_vacio_photons.png)
 
 ![Corriente de neutrones con poly](med_qf_poly_neutrons.png)
-![Corriente de fotones con poly](med_qf_poly_photons.png)
 
+![Corriente de fotones con poly](med_qf_poly_photons.png)
 
 
 ### Diferencias entre poner poly y no ponerlo
 
-Están medidas en la superficie interna del acero
+Medidas en la superficie interna del acero
  
 ![Corriente de neutrones con y sin poly](diff_vac_poly_neutrons.png)
+
 ![Corriente de fotones con y sin poly](diff_vac_poly_photons.png)
        
+Medidas de flujo en detector
+
+![Flujo de neutrones con y sin poly](diff_flux_vac_poly_neutrons.png)
+
+![Flujo de fotones con y sin poly](diff_flux_vac_poly_photons.png)
+
 

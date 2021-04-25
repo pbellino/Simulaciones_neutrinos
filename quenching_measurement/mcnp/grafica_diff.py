@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 
 """
-Script para leer los resultados de cada corrida
-TODO
+Script para comparar corriente de partículas entre espectros con y sin poly
 """
 
 import numpy as np
