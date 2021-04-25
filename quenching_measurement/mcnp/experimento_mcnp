@@ -6,8 +6,8 @@ c
 101 0           1000 -1001 1100 -1101           imp:n,p=1  $ Vacio dewar
 102 2  -7.99    1001 -1002 1100 -1101           imp:n,p=1  $ Dewar de acero inox.
 103 0           1002 -1003 1100 -1101           imp:n,p=1  $ Vacio entre dewar y poly
-104 3  -0.93    1003 -1004 1100 -1101           imp:n,p=1  $ Poly 
-c 104 0           1003 -1004 1100 -1101           imp:n,p=1  $ Vacio
+c 104 3  -0.93    1003 -1004 1100 -1101           imp:n,p=1  $ Poly 
+104 0           1003 -1004 1100 -1101           imp:n,p=1  $ Vacio
 105 4  -11.32   1004 -1005 1100 -1101           imp:n,p=1  $ Blindaje de plomo
 106 5  -1e-10  -1200                            imp:n,p=1  $ Fuente Cf252
 200 0           1200 1005 1100 -1101 -9999      imp:n,p=1  $ Lab
@@ -17,16 +17,16 @@ c ************************************************************************
 c SUPERFICIES
 c ************************************************************************
 c
-1000 RPP -0.01 0.01 -3.0 3.0 9.25 10.75 $ Detector (6cm x 1.5cm x 200um)
-1001 CZ  4.8                            $ Pared interna dewar
-1002 CZ  5.0                            $ Pared externa dewar
-1003 CZ  7.0                            $ Pared interna poly
-1004 CZ  7.5                            $ Pared externa poly
-1005 CZ  10.0                           $ Pared expterna plomo
-1100 PZ  0.0                            $ Base 
-1101 PZ  20.0                           $ Tapa
-1200 S -10.1 0 10 0.0001                $ Fuente
-9999 CZ  15.0                           $ Lab
+1000 RPP -0.01 0.01 -3.0 3.0 13.85 15.35 $ Detector (6cm x 1.5cm x 200um)
+1001 CZ  4.9149                          $ Pared interna dewar
+1002 CZ  5.08                            $ Pared externa dewar
+1003 CZ  6.7                             $ Pared interna poly
+1004 CZ  7.7                             $ Pared externa poly
+1005 CZ  12.4                            $ Pared externa plomo
+1100 PZ  0.0                             $ Base 
+1101 PZ  29.2                            $ Tapa
+1200 S -12.41 0 14.6 0.0001              $ Fuente
+9999 CZ  15.0                            $ Lab
 
 c ************************************************************************
 c MATERIALES
@@ -69,5 +69,5 @@ c ***************************************************
 c FUENTE
 c ***************************************************
 c
-c SDEF  PAR=n POS=-10.1 0 10 ERG=10
-SDEF  PAR=-SF POS=-10.1 0 10
+c SDEF  PAR=n POS=-12.41 0 14.6 ERG=10
+SDEF  PAR=-SF POS=-12.41 0 14.6

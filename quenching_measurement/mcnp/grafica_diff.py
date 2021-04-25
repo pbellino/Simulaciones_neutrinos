@@ -24,7 +24,7 @@ if __name__ == '__main__':
               'Without poly',
               'With poly',
               ]
-    tallies = ['31', '71']
+    tallies = ['41', '531']
     fig_n, ax_n = plt.subplots(1, 1, figsize=(8, 6))
     fig_p, ax_p = plt.subplots(1, 1, figsize=(8, 6))
     axs = [ax_n, ax_p]

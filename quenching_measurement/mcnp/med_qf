@@ -1,31 +1,42 @@
-Experimento Thinned Skipper-CCD. Detector en dewar, fuente Cf252 en plomo y mesa óptica.
+Simulación preliminar para medición del factor de quenching
 c
 c
 READ FILE=experimento_mcnp
 c ***************************************************
 c TALLIES
 c ***************************************************
-c ---- Flujos ---------------------------------------
+c ---- Corrientes -----------------------------------
+c
+c ----- Neutrones
 c
 E0 1e-5 198ILOG 100
 c
 FC11 Neutrones que salen de la fuente
 F11:n 1200
 c
-FC21 Neutrones luego del poly/plomo
-F21:n 1003
+FC21 Neutrones luego del plomo
+F21:n 1004
 c
-FC31 Neutrones luego del dewart
-F31:n 1001 
+FC31 Neutrones luego del poly/vacío
+F31:n 1003
+c
+FC41 Neutrones luego del dewart
+F41:n 1001 
+c
 c ------ Fotones
-FC51 Fotones que salen de la fuente
-F51:p 1200
 c
-FC61 Fotones luego del poly/plomo
-F61:p 1003 
+FC501 Fotones que salen de la fuente
+F501:p 1200
 c
-FC71 Fotones luego del dewart
-F71:p 1001 
+FC511 Fotones luego del plomo
+F511:p 1004
+c
+FC521 Fotones luego del poly/vacío
+F521:p 1003 
+c
+FC531 Fotones luego del dewart
+F531:p 1001 
+c
 c c ---- Energía depositada ---------------------------
 c c
 c FC18 Energía depositada por neutrones en Si
@@ -43,7 +54,7 @@ c
 c ***************************************************
 c PARAMETROS
 c ***************************************************
-FMULT METHOD=6          $ Generador (5:LLNL - neutrones y fotones)
+FMULT METHOD=6          $ Generador (5:LLNL 6:FREYA | neutrones y fotones)
 MODE n p 
 CUT:n J 0 0 0           $ Fuerza captura analógica
 CUT:p J J 0 0           $ Fuerza captura analógica

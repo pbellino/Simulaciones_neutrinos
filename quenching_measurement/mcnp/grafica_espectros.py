@@ -22,19 +22,20 @@ def escribe_espectros(archivo, tal, datos):
 
 if __name__ == '__main__':
 
-    archivo = 'med_qf_poly.o'
-    #archivo = 'med_qf_vacio.o'
+    #archivo = 'med_qf_poly.o'
+    archivo = 'med_qf_vacio.o'
     labels = [
               'Particle current over surface',
               ]
     fig_n, ax_n = plt.subplots(1, 1, figsize=(8, 6))
     fig_p, ax_p = plt.subplots(1, 1, figsize=(8, 6))
-    tals = {'neutrones': ['11', '21', '31'], 'fotones': ['51', '61', '71']}
+    tals = {'neutrones': ['11', '21', '31', '41'],
+            'fotones': ['501', '511', '521', '531']}
     axs = [ax_n, ax_p]
     datos, nombre, bins = lee_tally_E_card(archivo)
     for key, ax in zip(tals.keys(), axs):
         for talkey in tals[key]:
-            # escribe_espectros(archivo, key, datos[tals[key]])
+            # escribe_espectros(archivo, talkey, datos[talkey])
             eng = datos[talkey][:, 0]
             val = datos[talkey][:, 1]
             std_val = datos[talkey][:, 2] * val
