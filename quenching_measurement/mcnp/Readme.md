@@ -6,22 +6,24 @@
 
 - Geometría cilíndrica con las siguientes capas:
 
-    1. Cilindro de acero inox con 0.2 cm espesor (radio ext 5cm)
+    1. Cilindro de acero inox con 0.1651 cm espesor (radio ext 5.08cm)
 
-    2. Cilindro de poly/vacio de 0.5 cm de espesor (radio ext 7.5cm). Hago dos corridas, en una lo dejo vacío y en otra con poly
+    2. Cilindro de poly/vacio de 1.0 cm de espesor (radio ext 7.7cm). Hago dos corridas, en una lo dejo vacío y en otra con poly
 
-    3. Cilindro de plomo de 2.5 cm de espesor (radio externo 20cm)
+    3. Cilindro de plomo de 4.7 cm de espesor (radio externo 12.4cm)
 
-- Altura de todo el sistema 20 cm
+- Altura de todo el sistema 29.2 cm
 
 - El detector por ahora está de vista
 
-- Detector y fuente centrados a 10 cm en eje axial
+- Detector y fuente centrados a 12.41 cm en eje axial
 
 
 tallies, por ahora, miden corriente de partículas en las siguientes superficies:
 
 - Superficie de la fuente
+
+- Superficie interior del plomo
 
 - Superficie interna del poly/vacio
 
