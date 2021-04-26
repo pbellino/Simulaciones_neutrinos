@@ -1,0 +1,53 @@
+Simulación preliminar para medición del factor de quenching
+c
+c
+READ FILE=experimento_mcnp
+c ***************************************************
+c TALLIES
+c ***************************************************
+c ---- Corrientes -----------------------------------
+c
+c ----- Neutrones
+c
+E0 1e-5 198ILOG 100
+c
+FC11 Neutrones que salen de la fuente
+F11:n 1000
+c
+FC21 Neutrones luego del plomo
+F21:n 1001
+c
+c ------ Fotones
+c
+FC501 Fotones que salen de la fuente
+F501:p 1000
+E501 1e-3 198ILOG 100
+c
+FC511 Fotones luego del plomo
+F511:p 1001
+E511 1e-3 198ILOG 100
+c Para el acero
+FT511 TAG 1
+FU511  0 26000.00000 24000.00000 28000.00000 14000.00000 25000.00000 1e10 
+c
+c Para el poly
+c FT511 TAG 1
+c FU511  0 1001.00000 1000.00005 6000.00005 6000.00000 1e10 
+c
+c Para el plomo
+c FT511 TAG 1
+c FU511  0 82208.00000 82000.00005 82000.00003 1e10 
+c
+c ***************************************************
+c PARAMETROS
+c ***************************************************
+FMULT METHOD=6          $ Generador (5:LLNL 6:FREYA | neutrones y fotones)
+MODE n p 
+CUT:n J 0 0 0           $ Fuerza captura analógica
+CUT:p J J 0 0           $ Fuerza captura analógica
+c PHYS:n 6J 4             $ (colif=4) Generación de núcleos en scattering
+c LCA 9J 1                $ (ilaq=1) use LAQGSM08.03 for all interactions
+RAND GEN=2 SEED=1
+NPS 1e6
+PRINT
+
