@@ -1,0 +1,80 @@
+Simulación preliminar para medición del factor de quenching
+c
+c
+READ FILE=experimento_mcnp
+c ***************************************************
+c TALLIES
+c ***************************************************
+c ---- Corrientes -----------------------------------
+c
+c ----- Neutrones
+c
+E0 1e-5 198I 35
+c
+FC11 Neutrones que salen de la fuente
+F11:n 1200
+c
+FC21 Neutrones luego del plomo
+F21:n 1004
+c
+FC31 Neutrones luego del poly/vacío
+F31:n 1003
+c
+FC41 Neutrones luego del dewart
+F41:n 1001 
+c
+c ------ Fotones
+c
+FC501 Fotones que salen de la fuente
+F501:p 1200
+E501 1e-5 198I 15
+c
+FC511 Fotones luego del plomo
+F511:p 1004
+E511 1e-5 198I 15
+c
+FC521 Fotones luego del poly/vacío
+F521:p 1003 
+E521 1e-5 198I 15
+c
+FC531 Fotones luego del dewart
+F531:p 1001 
+E531 1e-5 198I 15
+c
+c ---- Flujo de partículas ----
+c
+FC14 Flujo de neutrones en el detector
+F14:n 100
+E14 1e-5 198I 25
+c
+FC504 Flujo de fotones en el detector
+F504:p 100
+E504 1e-5 198I 12
+c
+c c ---- Energía depositada ---------------------------
+c c
+c FC18 Energía depositada por neutrones en Si
+c F18:n 103
+c E18 0 1e-5 198I 0.5
+c c
+c FC518 Energía depositada por fotones en Si
+c F518:p 103
+c E518 0 1e-5 198I 0.5
+c c
+c FC918 Energía depositada fotones+neutrones en Si
+c F918:n,p 103
+c E918 0 1e-5 198I 0.5
+c
+c ***************************************************
+c PARAMETROS
+c ***************************************************
+FMULT METHOD=6          $ Generador (5:LLNL 6:FREYA | neutrones y fotones)
+MODE n p 
+CUT:n J 0 0 0           $ Fuerza captura analógica
+CUT:p J J 0 0           $ Fuerza captura analógica
+c PHYS:n 6J 4             $ (colif=4) Generación de núcleos en scattering
+c LCA 9J 1                $ (ilaq=1) use LAQGSM08.03 for all interactions
+RAND GEN=2 SEED=1
+NPS 1e7 
+PRINT
+
