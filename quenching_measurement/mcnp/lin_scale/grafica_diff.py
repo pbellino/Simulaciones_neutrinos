@@ -55,7 +55,7 @@ if __name__ == '__main__':
     for ax, title in zip(axs, titles):
         ax.set_xlabel('Energy [MeV]')
         ax.set_ylabel(ylabel)
-        ax.set_xscale('log')
+        #ax.set_xscale('log')
         ax.set_yscale('log')
         # ax.set_xlim(lim)
         # ax.set_ylim(4e-6, 5e-4)
