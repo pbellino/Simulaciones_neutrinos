@@ -9,7 +9,7 @@ c ---- Corrientes -----------------------------------
 c
 c ----- Neutrones
 c
-E0 1e-5 198I 35
+E0 1e-5 398I 35
 c
 FC11 Neutrones que salen de la fuente
 F11:n 1200
@@ -27,35 +27,35 @@ c ------ Fotones
 c
 FC501 Fotones que salen de la fuente
 F501:p 1200
-E501 1e-5 198I 15
+E501 1e-5 398I 15
 c
 FC511 Fotones luego del plomo
 F511:p 1004
-E511 1e-5 198I 15
+E511 1e-5 398I 15
 c
 FC521 Fotones luego del poly/vacío
 F521:p 1003 
-E521 1e-5 198I 15
+E521 1e-5 398I 15
 c
 FC531 Fotones luego del dewart
 F531:p 1001 
-E531 1e-5 198I 15
+E531 1e-5 398I 15
 c
 c ---- Flujo de partículas ----
 c
 FC14 Flujo de neutrones en el detector
 F14:n 100
-E14 1e-5 198I 25
+E14 1e-5 398I 25
 c
 FC504 Flujo de fotones en el detector
 F504:p 100
-E504 1e-5 198I 12
+E504 1e-5 398I 12
 c
 c c ---- Energía depositada ---------------------------
 c c
 c FC18 Energía depositada por neutrones en Si
 c F18:n 103
-c E18 0 1e-5 198I 0.5
+c E18 0 1e-5 398I 0.5
 c c
 c FC518 Energía depositada por fotones en Si
 c F518:p 103

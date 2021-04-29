@@ -21,8 +21,8 @@ def escribe_espectros(archivo, tal, datos):
 
 if __name__ == '__main__':
 
-    archivo = 'med_qf_poly.o'
-    #archivo = 'med_qf_vacio.o'
+    #archivo = 'med_qf_poly.o'
+    archivo = 'med_qf_vacio.o'
     labels = [
               'Particle flux over detector',
               ]

@@ -6,8 +6,8 @@ c
 101 0           1000 -1001 1100 -1101           imp:n,p=1  $ Vacio dewar
 102 2  -7.99    1001 -1002 1100 -1101           imp:n,p=1  $ Dewar de acero inox.
 103 0           1002 -1003 1100 -1101           imp:n,p=1  $ Vacio entre dewar y poly
-104 3  -0.93    1003 -1004 1100 -1101           imp:n,p=1  $ Poly 
-c 104 0           1003 -1004 1100 -1101           imp:n,p=1  $ Vacio
+c 104 3  -0.93    1003 -1004 1100 -1101           imp:n,p=1  $ Poly 
+104 0           1003 -1004 1100 -1101           imp:n,p=1  $ Vacio
 105 4  -11.32   1004 -1005 1100 -1101           imp:n,p=1  $ Blindaje de plomo
 106 5  -1e-10  -1200                            imp:n,p=1  $ Fuente Cf252
 200 0           1200 1005 1100 -1101 -9999      imp:n,p=1  $ Lab
