@@ -1,0 +1,197 @@
+$OMP=6
+[ T i t l e ]
+Input file for shieldin optimization - 10cm + 1cm
+
+[ P a r a m e t e r s ]
+ icntl    =           0     # (D=0) 3:ECH 5:NOR 6:SRC 7,8:GSH 11:DSH 12:DUM
+ maxcas   =       20000     # (D=10) number of particles per one batch
+ maxbch   =         500     # (D=10) number of batches
+ emin(6)  =    1.00E-03     # (D=1.0) cut-off energy of muon+ (MeV)
+ emin(7)  =    1.00E-03     # (D=1.0) cut-off energy of muon- (MeV)
+ negs     =           1     # (D=0) =1 EGS photon and electron
+ ipnint   =           0     # (D=0) 0: no, 1: consider photo-nuclear reaction
+ e-mode   =           2     # (D=0) 0: no ev gen, 1: ev gen ver1, 2: ev gen ver2
+
+[ S o u r c e ]
+  totfact =   1
+   s-type =   1
+     proj =   photon        # kind of incident particle
+       r0 =   1.0           # radius [cm]
+       x0 =   0.0000        # (D=0.0) center position of x-axis [cm]
+       y0 =   0.0000        # (D=0.0) center position of y-axis [cm]
+       z0 =  -1.000E-4      # minimum position of z-axis [cm]
+       z1 =  -1.000E-4      # maximum position of z-axis [cm]
+      dir =   1.0000
+   e-type =   1
+       e0 =   2
+
+[ Material ]
+MAT[1]
+   208Pb 1.0   # rho=15.6
+MAT[2]
+   63Cu 1.0    # rho=8.96
+MAT[3]
+    56Fe 1.0   # rho=7.87
+MAT[4]
+    28Si 1.0   # rho=2.33
+MAT[5]
+    27Al 1.0   # rho=2.7
+
+[ Cell ] off
+   $ Todo vacío
+   1  0          1  -2  -999
+  10  0          2  -3  -999   $ 1
+  11  0          3  -4  -999   $ 2
+  12  0          4  -5  -999   $ 3 
+  98  4 -2.33    5 -998 -999   $ Detector
+  99 -1         -1: 998:  999
+
+[ Cell ] off
+   $ Todos los materiles
+   1  0          1  -2  -999
+  10  1 -15.6    2  -3  -999   $ 1
+  11  2 -8.96    3  -4  -999   $ 2
+  12  5 -2.7     4  -5  -999   $ 3 
+  98  4 -2.33    5 -998 -999   $ Detector
+  99 -1         -1: 998:  999
+
+
+[ Cell ]  off
+  $ 10cm de plomo
+   1  0          1  -2  -999
+  10  1 -15.6    2  -3  -999   $ 1
+  11  0          3  -4  -999   $ 2
+  12  0          4  -5  -999   $ 3 
+  98  4 -2.33    5 -998 -999   $ Detector
+  99 -1         -1: 998:  999
+
+[ Cell ] off
+  $ 10cm de plomo + 1 cm Cu
+   1  0          1  -2  -999
+  10  1 -15.6    2  -3  -999   $ 1
+  11  2 -8.96    3  -4  -999   $ 2
+  12  2 -8.96    4  -5  -999   $ 3 
+  98  4 -2.33    5 -998 -999   $ Detector
+  99 -1         -1: 998:  999
+
+[ Cell ] off
+  $ 10cm de plomo + 1 cm Si
+   1  0          1  -2  -999
+  10  1 -15.6    2  -3  -999   $ 1
+  11  4 -2.33    3  -4  -999   $ 2
+  12  4 -2.33    4  -5  -999   $ 3 
+  98  4 -2.33    5 -998 -999   $ Detector
+  99 -1         -1: 998:  999
+
+[ Cell ] 
+  $ 10cm de plomo + .5 cm Cu + .5cm Si
+   1  0          1  -2  -999
+  10  1 -15.6    2  -3  -999   $ 1
+  11  2 -8.96    3  -4  -999   $ 2
+  12  4 -2.33    4  -5  -999   $ 3 
+  98  4 -2.33    5 -998 -999   $ Detector
+  99 -1         -1: 998:  999
+
+[ Surface ]
+   1  pz   -1.0
+   2  pz    0.0
+   3  pz   10.0
+   4  pz   10.5
+   5  pz   11.0
+ 998  pz   13.0
+ 999  cz   15.0
+
+
+[T-Track]
+    title = [t-track] in xyz mesh
+     mesh =  xyz            # mesh type is xyz scoring mesh
+   x-type =    2            # x-mesh is linear given by xmin, xmax and nx
+     xmin =  -20            # minimum value of x-mesh points
+     xmax =   20            # maximum value of x-mesh points
+       nx =  100            # number of x-mesh points
+   y-type =    1            # y-mesh is given by the below data
+       ny =    1            # number of y-mesh points
+            -20  20
+   z-type =    2            # z-mesh is linear given by zmin, zmax and nz
+     zmin =   0.0e+0        # minimum value of z-mesh points
+     zmax =   25            # maximum value of z-mesh points
+       nz =  100            # number of z-mesh points
+   e-type =    2            # e-mesh is linear given by emin, emax and ne
+     emin =   0.0           # minimum value of e-mesh points
+     emax =   5.0           # maximum value of e-mesh points
+       ne =    1            # number of e-mesh points
+     unit =    1            # unit is [1/cm^2/source]
+ material =  all            # (D=all) number of specific material
+  2D-type =    3            # 1:Cont, 2:Clust, 3:Color, 4:xyz, 5:mat, 6:Clust+Cont, 7:Col+Cont
+     axis =   xz            # axis of output
+     file = track.out     # file name of output for the above axis
+     part = photon
+   epsout =    1            # (D=0) generate eps file by ANGEL
+
+[ T - C r o s s ] off
+    title = Energy distribution in region mesh
+     mesh =  reg            # mesh type is region-wise
+      reg =    1            # number of crossing regions
+      non     r-from  r-to      area
+        1      12      98      1.000000        
+   e-type =    3            # e-mesh is log given by emin, emax and ne
+     emin =   1e-3          # minimum value of e-mesh points
+     emax =    2.50         # maximum value of e-mesh points
+       ne =   50            # number of e-mesh points
+     unit =    1            # unit is [1/cm^2/MeV/source]
+     axis =  eng            # axis of output
+     file = cross_reg_10Pb05Cu05Si.out   # file name of output for the above axis
+   output = flux            # surface crossing flux
+     part = photon  all   
+   epsout =    1            # (D=0) generate eps file by ANGEL
+
+
+[ T - C r o s s ] 
+    title = Energy distribution passing materials
+     mesh =  reg            # mesh type is region-wise
+      reg =    3            # number of crossing regions
+      non     r-from  r-to      area
+        1      10      11      1.000000        
+        2      11      12      1.000000        
+        3      12      98      1.000000        
+   e-type =    3            # e-mesh is log given by emin, emax and ne
+     emin =   1e-3          # minimum value of e-mesh points
+     emax =    2.50         # maximum value of e-mesh points
+       ne =   50            # number of e-mesh points
+     unit =    1            # unit is [1/cm^2/MeV/source]
+     axis =  eng            # axis of output
+     file = cross_reg_10Pb05Cu05Si.out   # file name of output for the above axis
+   output = flux            # surface crossing flux
+     part = photon  all   
+   epsout =    1            # (D=0) generate eps file by ANGEL
+
+
+[ T-deposit ] 
+    title = [t-deposit] in Si detector 
+     mesh =  reg            # mesh type is region-wise
+      reg =  98
+   output =  deposit
+    e-type = 3
+    emin = 1e-5
+    emax = 10
+       ne = 200
+     axis =  eng
+     part =  all
+     unit =  3
+     file =  deposit_eng_10Pb05Cu05Si.out
+   epsout =  1
+   stdcut = 0.05
+
+[ T-deposit ] off
+    title = [t-deposit] in Si detector 
+     mesh =  reg            # mesh type is region-wise
+      reg =  98
+   output =  dose
+     axis =  reg
+     part =  all
+     unit =  1
+     file =  deposit.out
+   epsout =  1
+   stdcut = 0.05
+
+[END]
