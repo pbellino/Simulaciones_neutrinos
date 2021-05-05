@@ -63,3 +63,19 @@ Medidas de flujo en detector
 ![Flujo de fotones con y sin poly](diff_flux_vac_poly_photons.png)
 
 
+### Efecto de los fotones de fuente
+
+Se compara el flujo de fotones sobre el detector:
+
+* Fuente emitiendo neutrones y fotones
+* Fuente emitiendo sólo neutrones
+
+En MCNP lo modelo usando la tarjeta FMULT=3 que usa un generador de eventos que sólo produce neutrones del Cf252, en comparación con el FMULT=6 que produce neutrones y fotones.
+
+En esta comparación no hay poly:
+
+![Flujo de neutrones con y sin fotones de fuente](diff_flux_vac_wo_photons_neutrons.png)
+
+![Flujo de fotones con y sin fotones de fuente](diff_flux_vac_wo_photons_photons.png)
+
+
