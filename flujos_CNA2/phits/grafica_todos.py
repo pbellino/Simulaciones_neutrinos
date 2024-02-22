@@ -52,13 +52,13 @@ if __name__ == '__main__':
     carpetas = [
                 'epitermico/',
                 '1rapido/',
-                '2rapido/5MeV/',
+                #'2rapido/5MeV/',
                 '2rapido/10MeV/',
                 ]
     labels = [
               'Epithermal',
               '1 Fast',
-              '2 Fast (5MeV cut)',
+              #'2 Fast (5MeV cut)',
               '2 Fast (10MeV cut)',
               ]
 
@@ -124,6 +124,11 @@ if __name__ == '__main__':
     #ax.errorbar(eng, total_flux, fmt='.-', label='Total flux',
     #            capsize=3, drawstyle='steps-mid',
     #            )
+
+    print("Flujos sumados por energía")
+    print(total_flux.T)
+    print(f"Flujo total: {sum(total_flux):.4e}")
+
 
     fig.savefig('espectro_flujos.png')
     plt.show()

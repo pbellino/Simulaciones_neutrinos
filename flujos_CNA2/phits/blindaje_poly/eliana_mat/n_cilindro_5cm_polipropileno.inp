@@ -1,0 +1,157 @@
+[ T i t l e ]
+Flujo de neutrones a la salida de una placa de polipropileno producido por un haz colimado de neutrones.
+# E.Depaoli
+
+[ P a r a m e t e r s ]
+ icntl    =         0       # (D=0) 0: correr input 8:probar geometria 5:probar fuente
+ maxcas   =       1e5	    # (D=10) número de partículas en cada lote
+ maxbch   =       1e5    	# (D=10) número de lotes
+ emin(2)  =		1.0e-9		# (D=1e-3) energía de corte neutron [MeV]
+ emin(12) = 	1.0e-3		# (D=0.1 si negs=1) energía de corte e- [MeV]
+ emin(13) = 	1.0e-3		# (D=0.1 si negs=1) energía de corte e+ [MeV]
+ emin(14) = 	1.0e-3		# (D=0.001 si negs=1) energía de corte fotones [MeV]
+ negs     =           1     # (D=0) =1 EGS Transporte de e-, e+, y fotones
+ e-mode   =           2		# (D=0) D=0 Muestreo simple, D=1 + modelo de evaporación, D=2 + cosecha de partículas cargadas + distribución de energía de neutrones
+ ikerman  = 		  1		# (D=0) Kerma approximation for neutrons. D=0,1 it is not used, D=2 it is used.
+ ipnint   =           1     # (D=0) 0: no, 1: consider photo-nuclear reaction
+ itall    =           1     #  Actualizo resultados al finalizar cada lote (gráficos)
+ istdev   = -2               #  restart calculation mode (para continuar simulacion)
+ file(1)  = /home/pbellino/grcn/phits3.17/phits317B/phits
+
+
+set: c13[1.0087]	 $ masa neutron [u]
+set: c20[0.65e2]	 $ coordenada x para graficar 2D
+set: c1[0.5]		 $ espesor región de evaluación del flujo de neutrones
+set: c3[1e2]         $ altura cilindro poli [cm]
+set: c4[-5e1]        $ piso cilindro [cm]
+set: c5[1.5e1]       $ radio interior cilindro poli
+set: c6[2.0e1]       $ radio exterior cilindro poli
+
+[ S o u r c e ]
+	totfact = 398318        $flujo total
+	s-type =   4			# fuente cilíndrica (lápiz)
+    proj =   neutron	    # tipo de partícula incidente
+    r0 =   5.0e0     	    # radio [cm]
+    x0 =   0.0000        	# (D=0.0) coordenada x del centro [cm]
+    y0 =   0.0000        	# (D=0.0) coordenada y del centro[cm]
+    z0 =   -c6-0.5e1  		# posición mínima sobre el eje z [cm]
+    z1 =   -c6              # posición máxima sobre el eje z [cm]
+    dir =   1				# = all isotropic ; = 1 dirección z>0; ¿cual de las dos es mas adecuada aqui?
+	#dom =  90               # Solid angle[degree]
+    $e0 =   2.0e3  			# Energia [MeV]
+	e-type = 4  			# Distribución continua de energía en cada bin 
+	infl: {incident_flux.inp}[-13]
+
+[ Material ]
+MAT[1]	 		$ Plomo, densidad 11.35 g/cm^3
+    Pb  1.0
+
+MAT[2]  		$ EJ-301 Scintillator. Densidad: 0.874 g/cm**3
+    C  1.000
+    H  1.212
+
+MAT[3]			$Aire, fracción atómica ,densidad 1.20479000e-3 g/cm^3
+ N 7.84374e-1
+ O 2.1076e-1
+ Ar 4.6911e-3
+ C 1.7579e-4
+
+MAT[4]          $Polipropileno, densidad 0.90 g/cm^3
+C 3
+H 6
+ 
+[ Mat Name Color ]
+mat name 		color
+0 Vacio 		orange
+1 Pb 			darkgray	
+2 Centellador	purple
+3 Aire 			pastelcyan
+4 Polipropileno green
+ 
+[ Surface ]
+  1 so    1.0e+3    $limite con el exterior
+  2 py    c4        $piso del cilindro
+  3 py    c4+c3     $tapa del cilindro
+  4 cy    c5        $radio interior del blindaje cilindrico
+  5 cy    c6        $radio exterior del blindaje cilindrico
+
+  
+[ Cell ]
+   11  0     		2 -4 -3  					$ Hueco cilíndrico del blindaje de poli
+   12  4 -0.9        2 -3 -5 #11                 $ Blindaje de poli
+   98  3 -1.2e-3	-1 #11 #12				    $ Ambiente
+   99  -1           		1		            $ espacio exterior
+
+[ T - C r o s s ] 
+    title = Energy distribution in region mesh
+    mesh =  reg            							# mesh type is region-wise
+    reg =  1              							# number of crossing regions
+    r-from  r-to   area
+	12     11		1					 	$ Salen del poly hacia su hueco interior. Area lateral cilindro.2*pi*c5*c3
+    e-type =   3             						# e-mesh is log given by emin, emax and ne
+	ne =   10								        # number of e-mesh points
+    emin =   1e-9             						# minimum value of e-mesh points (MeV)
+    emax =   1e1         							# maximum value of e-mesh points (MeV)
+    part = neutron
+    unit =    1            							# unit is [1/cm^2/source]
+    axis =  eng            							# axis of output (eng: energy)
+    file = current.output     						# nombre del archivo de salida para 'axis'
+    output = current         						# surface crossing flux
+	gshow =    3            						# 0: no 1:bnd, 2:bnd+mat, 3:bnd+reg 4:bnd+lat
+	epsout =   2            						# genera archivo eps con ANGEL con barras de error
+	 
+[T-Track]
+    title = Blindaje de polipropileno
+    mesh =  xyz            								# tipo de malla de la región sobre la que se efectúan los cálculos
+	x-type =    2            							# x-mesh is linear given by xmin, xmax and nx
+    xmin =  -c20           								# minimum value of x-mesh points
+    xmax =   c20           								# maximum value of x-mesh points
+    nx =   100           								# number of x-mesh points
+	y-type =    1            							# y-mesh is given by the below data
+    ny =    1            								# number of y-mesh points
+      -c20  c20
+	z-type =    2            							# z-mesh is linear given by zmin, zmax and nz
+    zmin =  -c20/2   	    								# minimum value of z-mesh points
+    zmax =   c20/2         								# maximum value of z-mesh points
+    nz =  100            								# number of z-mesh points
+	e-type =    3            							# e-mesh is linear given by emin, emax and ne
+    emin =   1.0e-9         							# minimum value of e-mesh points
+    emax =   1.0e1        								# maximum value of e-mesh points
+    ne =    1            								# number of e-mesh points
+    unit =    1            								# unit is [1/cm^2/source]
+	material =  all            							# (D=all) number of specific material
+	2D-type =    3            							# 1:Cont, 2:Clust, 3:Color, 4:xyz, 5:mat, 6:Clust+Cont, 7:Col+Cont
+    axis =   xz            								# axis of output
+    file =  track_xz.out  								# nombre del archivo de salida para 'axis' de arriba
+    part = neutron
+	epsout =    1            							# (D=0) genera archivo eps con ANGEL
+	gshow  =    2
+	
+[T-Track]
+    title = Blindaje de polipropileno
+    mesh =  xyz            								# tipo de malla de la región sobre la que se efectúan los cálculos
+	x-type =    2            							# x-mesh is linear given by xmin, xmax and nx
+    xmin =  -c20           								# minimum value of x-mesh points
+    xmax =   c20           								# maximum value of x-mesh points
+    nx =   100           								# number of x-mesh points
+	z-type =    1            							# y-mesh is given by the below data
+    nz =    1            								# number of y-mesh points
+      -c20  c20
+	y-type =    2            							# z-mesh is linear given by zmin, zmax and nz
+    ymin =   -c20       								# minimum value of z-mesh points
+    ymax =   c20           								# maximum value of z-mesh points
+    ny =  100            								# number of z-mesh points
+	e-type =    3            							# e-mesh is linear given by emin, emax and ne
+    emin =   1.0e-9           								# minimum value of e-mesh points
+    emax =   1.0e1         								# maximum value of e-mesh points
+    ne =    1            								# number of e-mesh points
+    unit =    1            								# unit is [1/cm^2/source]
+	material =  all            							# (D=all) number of specific material
+	2D-type =    3            							# 1:Cont, 2:Clust, 3:Color, 4:xyz, 5:mat, 6:Clust+Cont, 7:Col+Cont
+    axis =   xy            								# axis of output
+    file =  track_xy.out  								# nombre del archivo de salida para 'axis' de arriba
+    part = neutron
+	epsout =    1            							# (D=0) genera archivo eps con ANGEL
+	gshow  =    2
+	
+	[END]
