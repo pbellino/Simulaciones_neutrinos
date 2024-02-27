@@ -1,0 +1,128 @@
+[ T - C r o s s ]
+    title = Energy distribution in region mesh
+     mesh =  reg            # mesh type is region-wise
+      reg =    3            # number of crossing regions
+      non     r-from    r-to       area
+      1       110       101        1.000000    
+      2       101       102        1.000000    
+      3       102       103        1.000000    
+   e-type =    3            # e-mesh is log given by emin, emax and ne
+     emin =  1.0000000E-09  # minimum value of e-mesh points
+     emax =   10.00000      # maximum value of e-mesh points
+#    edel =   2.302585      # mesh width of e-mesh points
+       ne =     10          # number of e-mesh points
+#    data = ( e(i), i = 1, ne + 1 )
+#           1.00000E-09  1.00000E-08  1.00000E-07  1.00000E-06  1.00000E-05
+#           1.00000E-04  1.00000E-03  1.00000E-02  1.00000E-01  1.00000E+00
+#           1.00000E+01
+     unit =    1            # unit is [1/cm^2/source]
+     axis =  eng            # axis of output
+     file = cross_reg.out   # file name of output for the above axis
+   output = current         # surface crossing current spectrum
+     part =  neutron  
+# kf/name :  2112     
+   factor =  398320.0       # (D=1.0) normalization factor
+   epsout =    1            # (D=0) generate eps file by ANGEL
+#    used :        main (  %)        temp (  %)       total (  %)
+#  memory :          38 (  0)           0 (  0)          38 (  0)
+
+#------------------------------------------------------------------------------
+#newpage:
+#   no. =    1   reg = 110 - 101
+
+x: Energy [MeV]
+y: Current [1/cm^2/source]                 
+p: xlog ylog afac(0.8) form(0.9)
+h: n            x            y(neutron ),hh0l   n 
+#  e-lower      e-upper      neutron     r.err 
+   1.0000E-09   1.0000E-08   1.3295E+05  0.0000
+   1.0000E-08   1.0000E-07   2.6101E+05  0.0000
+   1.0000E-07   1.0000E-06   4.9928E+03  0.0000
+   1.0000E-06   1.0000E-05   1.3333E+02  0.0000
+   1.0000E-05   1.0000E-04   1.2682E+01  0.0000
+   1.0000E-04   1.0000E-03   1.2191E+00  0.0000
+   1.0000E-03   1.0000E-02   1.1701E-01  0.0000
+   1.0000E-02   1.0000E-01   1.4905E-02  0.0000
+   1.0000E-01   1.0000E+00   3.2715E-03  0.0000
+   1.0000E+00   1.0000E+01   1.0327E-03  0.0000
+
+#   sum over                 3.9910E+05
+'no. =    1   reg = 110 - 101'
+msuc: {\huge Energy distribution in region mesh}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.17}
+wt: s(0.7)
+\vspace{-3}
+  region surface crossing
+  area  &=&   1.0000E+00 [cm^2]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =    2   reg = 101 - 102
+
+x: Energy [MeV]
+y: Current [1/cm^2/source]                 
+p: xlog ylog afac(0.8) form(0.9)
+h: n            x            y(neutron ),hh0l   n 
+#  e-lower      e-upper      neutron     r.err 
+   1.0000E-09   1.0000E-08   1.3259E+05  0.0000
+   1.0000E-08   1.0000E-07   2.6082E+05  0.0000
+   1.0000E-07   1.0000E-06   5.0186E+03  0.0000
+   1.0000E-06   1.0000E-05   1.3318E+02  0.0000
+   1.0000E-05   1.0000E-04   1.2667E+01  0.0000
+   1.0000E-04   1.0000E-03   1.2177E+00  0.0000
+   1.0000E-03   1.0000E-02   1.1689E-01  0.0000
+   1.0000E-02   1.0000E-01   1.4894E-02  0.0000
+   1.0000E-01   1.0000E+00   3.2703E-03  0.0000
+   1.0000E+00   1.0000E+01   1.0325E-03  0.0000
+
+#   sum over                 3.9857E+05
+'no. =    2   reg = 101 - 102'
+msuc: {\huge Energy distribution in region mesh}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.17}
+wt: s(0.7)
+\vspace{-3}
+  region surface crossing
+  area  &=&   1.0000E+00 [cm^2]
+e:
+
+#------------------------------------------------------------------------------
+ newpage:
+#   no. =    3   reg = 102 - 103
+
+x: Energy [MeV]
+y: Current [1/cm^2/source]                 
+p: xlog ylog afac(0.8) form(0.9)
+h: n            x            y(neutron ),hh0l   n 
+#  e-lower      e-upper      neutron     r.err 
+   1.0000E-09   1.0000E-08   7.6930E+01  0.0004
+   1.0000E-08   1.0000E-07   1.5561E+03  0.0001
+   1.0000E-07   1.0000E-06   2.1441E+02  0.0002
+   1.0000E-06   1.0000E-05   7.3846E-05  0.0149
+   1.0000E-05   1.0000E-04   1.4925E-05  0.0069
+   1.0000E-04   1.0000E-03   9.7350E-06  0.0010
+   1.0000E-03   1.0000E-02   9.9266E-06  0.0002
+   1.0000E-02   1.0000E-01   1.3630E-05  0.0001
+   1.0000E-01   1.0000E+00   4.1792E-05  0.0001
+   1.0000E+00   1.0000E+01   2.2899E-04  0.0000
+
+#   sum over                 1.8475E+03
+'no. =    3   reg = 102 - 103'
+msuc: {\huge Energy distribution in region mesh}
+msdr: {\it plotted by \ANGEL \version}
+msdl: {\it calculated by \PHITS  3.17}
+wt: s(0.7)
+\vspace{-3}
+  region surface crossing
+  area  &=&   1.0000E+00 [cm^2]
+e:
+ 
+# Information for Restart Calculation
+# This calculation was newly started
+# istdev =  2 # 1:Batch variance, 2:History variance
+# resc2  = 5.34859298054879532E+10 # Total source weight or Total source weight / maxcas
+# resc3  = 5.34850000000000000E+10 # Total history number or Total batch number
+# maxcas =      100000 # History / Batch, only used for istdev=1
+# rijklst= 229258379940761.0 # Next initial random number
